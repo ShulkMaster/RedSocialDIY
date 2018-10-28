@@ -25,9 +25,13 @@ body {
     background-repeat: no-repeat;
 }
 
-.container {
+.contenedorRED {
     width: 95%;
     margin: auto;
     padding: 0.1em;
     max-width: 2500px;
+}
+
+.splitter{
+    margin-top: 5em;
 }

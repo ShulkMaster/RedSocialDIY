@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-infor',
-  templateUrl: './infor.component.html',
-  styleUrls: ['./infor.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class InforComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   maseegeform: FormGroup;
   submited: boolean = false;
@@ -21,17 +21,6 @@ export class InforComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  onSubmit(){
-    this.submited = true;
-
-    if(this.maseegeform.invalid){
-      return;
-    }
-    alert('Mensaje enviado');
-    this.exito = true;
-
   }
 
 }
