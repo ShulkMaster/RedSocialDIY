@@ -1,0 +1,112 @@
+@import url(https://use.fontawesome.com/releases/v5.4.1/css/all.css);
+
+.topbar {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    z-index: 3;
+    padding: 1em 0;
+    margin-bottom: 5em;
+}
+
+.logos {
+    height: 100%;
+    width: 10%;
+}
+
+.logos img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.nave {
+    width: 20%;
+}
+
+.nave nav {
+    height: inherit;
+}
+
+.nave ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nave ul li {
+    padding: 1em;
+    color: var(--color2);
+}
+
+.nave ul li:hover {
+    background-color: var(--main-color2);
+}
+
+.nave ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.contenbar {
+    width: 35%;
+}
+
+.colorbox{
+    background-color: var(--main-color2);
+    float: right;
+    width: 30%;
+    border-radius: 1em;
+    transition: all 0.3s ease;
+}
+.searchbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.colorbox:hover {
+    width: 100%;
+}
+
+.searchbox input[type=text] {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0.5em;
+    color: var(--color2);
+    font-size: 1em;
+    line-height: 1em;
+    width: 80%;
+}
+
+.searchbox p {
+    color: var(--color2);
+    width: 10%;
+    padding: 0.8em;
+    max-width: 50px;
+    text-align: right;
+}
+
+.Logboton a {
+    text-decoration: none;
+    color: var(--color2);
+    padding: 0.8em;
+    margin: 0 0.3em;
+    background-color: var(--main-color2);
+    border: solid 1px var(--main-color2);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.Logboton a:hover {
+    color: var(--enfasis-color);
+    background-color: var(--color1);
+    border-color: var(--enfasis-color);
+}

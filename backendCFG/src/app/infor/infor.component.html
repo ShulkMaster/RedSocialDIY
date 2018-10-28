@@ -1,0 +1,65 @@
+<h1 class="primiuntext">Envienos sus comentarios</h1>
+
+<form [formGroup]="maseegeform" (ngSubmit)='onSubmit()' class="formula">
+  <h5 *ngIf="exito"> Formulario Valido</h5>
+  <div class="wrap card">
+    <p class="primiuntext">Formulario XP</p>
+    <p class="primiuntext">Personal:</p>
+    <fieldset class="card">
+
+      <div class="capturador">
+        <label for="nombre">Nombre:
+          <input type="text" formControlName="nombre" placeholder="Ingrese su nombre">
+        </label>
+      </div>
+
+      <div class="capturador">
+        <label>Email:
+            <input type="email" formControlName="correo" placeholder="Ingrese su email">
+        </label>
+      </div>
+
+      <div class="capturador">
+        <label for="pais">Pais</label>
+        <select name="pais" id="pais">
+          <option value="Venezuela">Venezuela</option>
+          <option value="Argentina">Argentina</option>
+          <option value="El Salvador">El Salvador</option>
+          <option value="Guatemala">Guatemala</option>
+          <option value="Honduras">Honduras</option>
+          <option value="Nicaragua">Nicaragua</option>
+        </select>
+      </div>
+
+      <div class="capturador">
+        <label>Mensaje:
+          <input type="text" formControlName="textmesaqje" placeholder="Ingrese su mensaje">
+        </label>
+      </div>
+
+    </fieldset>
+
+
+    <fieldset class="card">
+      <div class="enclosure">
+        <div class="cube">
+          <div class="front">
+            <p>Hola</p>
+          </div>
+          <div class="back">
+            <p>Hola</p>
+          </div>
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left">
+            <p>Hola</p>
+          </div>
+          <div class="right">
+            <p>Hola</p>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <input type="submit" value="Enviar">
+  </div>
+</form>

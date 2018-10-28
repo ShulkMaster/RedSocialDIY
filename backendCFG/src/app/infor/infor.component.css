@@ -1,0 +1,138 @@
+.primiuntext {
+    display: block;
+    color: black;
+    text-align: center;
+}
+
+.formula{
+    background-color: #bababa;
+}
+
+.formula .card {
+    box-sizing: border-box;
+    border: 8px solid var(--main-color2);
+}
+
+.formula .card .primiuntext{
+    background-color: var(--main-color);
+    padding: 1em;
+}
+
+.formula .capturador {
+    position: relative;
+    margin-bottom: 0.1em;
+    width: 90%;
+    margin: auto;
+    padding: 0 1em;
+}
+
+.formula .capturador label {
+    display: block;
+    font-size: 1.2em;
+    color: #303F9F;
+    padding: 1em 0;
+}
+
+.formula .capturador input[type="text"],
+.formula .capturador input[type="email"],{
+    font-size: 1.2em;
+    color: #303F9F;
+    width: 85%;
+    margin-left: 2em;
+    outline: none;
+    padding: 15px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #BBDEFB;
+}
+
+.formula .capturador input[type="text"]:focus,
+.formula .capturador input[type="text"]:active,
+.formula .capturador input[type="email"]:focus,
+.formula .capturador input[type="email"]:active{
+    outline: none;
+    border-bottom: 2px solid #303F9F;
+}
+
+.formula .capturador input[type="text"]::placeholder,
+.formula .capturador input[type="email"]::placeholder,
+.formula .capturador input[type="password"]::placeholder,
+.formula .capturador input[type="tel"]::placeholder {
+    color: #303030;
+    opacity: 1;
+}
+
+.formula .capturador input[type="text"]:focus::placeholder,
+.formula .capturador input[type="email"]:focus::placeholder,
+.formula .capturador input[type="password"]:focus::placeholder,
+.formula .capturador input[type="tel"]:focus::placeholder {
+    color: var(--enfasis-color);
+    opacity: 0.4;
+}
+
+.formula .capturador input[type="text"]:focus::-ms-input-placeholder,
+.formula .capturador input[type="email"]:focus::-ms-input-placeholder,
+.formula .capturador input[type="password"]:focus::-ms-input-placeholder,
+.formula .capturador input[type="tel"]:focus::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--enfasis-color);
+    opacity: 0.4;
+}
+
+.formula .capturador input[type="text"].error,
+.formula .capturador input[type="email"].error,
+.formula .capturador input[type="password"].error {
+    border-bottom: 2px solid #D32F2F;
+}
+
+.formula .capturador input[type="text"].error + label,
+.formula .capturador input[type="email"].error + label,
+.formula .capturador input[type="password"].error + label {
+    color: #D32F2F;
+}
+
+.formula .capturador.error label {
+    color: #D32F2F;
+}
+
+.formula .capturador.error label:hover {
+    background: rgba(211, 47, 47, 0.2);
+}
+
+.formula .capturador.error label:before {
+    border: 2px solid #D32F2F;
+}
+
+.formula .capturador select {
+    font-size: 1.3em;
+    background-color: var(--main-color);
+    color: aliceblue;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    padding: 15px;
+}
+
+.formula .capturador select:hover {
+    background-color: var(--enfasis-color);
+}
+
+.formula input[type="submit"] {
+    background-color: var(--main-color);
+    border-radius: 1.3em;
+    border: 2px solid #f2f2f2;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.6em;
+    padding: 15px;
+    width: 65%;
+    transition: all 0.3s ease;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formula input[type="submit"]:hover {
+    background: var(--enfasis-color);
+    width: 75%;
+}
