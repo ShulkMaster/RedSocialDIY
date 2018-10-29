@@ -4,12 +4,12 @@
       <form [formGroup]="formlogin" (ngSubmit)='onSubmit()'>
         <div class="form-group">
           <label for="exampleInputEmail1">Correo electronico</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email" placeholder="Ingrese su correo">
+          <input type="email" class="form-control w-75" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email" placeholder="Ingrese su correo">
           <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo con nadie mas</small>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Contraseña</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="passwd" placeholder="Contraseña">
+          <input type="password" class="form-control w-75" id="exampleInputPassword1" formControlName="passwd" placeholder="Contraseña">
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">

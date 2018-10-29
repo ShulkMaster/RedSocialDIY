@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
+@import url(https://use.fontawesome.com/releases/v5.4.1/css/all.css);
+
 
 ::root {
     box-sizing: border-box;
@@ -22,7 +25,7 @@
 
 body {
     background-image: linear-gradient(180deg, var(--main-color)30%, var(--enfasis-color) 100%);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 .contenedorRED {
