@@ -8,19 +8,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  maseegeform: FormGroup;
+  formlogin: FormGroup;
   submited: boolean = false;
   exito: boolean = false;
 
   constructor(private formmaker: FormBuilder) { 
-    this.maseegeform = this.formmaker.group({
-      nombre: ['', Validators.required],
-      textmesaqje: ['', Validators.required],
-      correo: ['', Validators.email]
+    this.formlogin = this.formmaker.group({
+      email: ['', Validators.required],
+      passwd: ['', Validators.required]
     });
   }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    alert('hola'+ this.formlogin.controls.email.value);
   }
 
 }
