@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 offset-md-4 border1">
-      <form [formGroup]="loginform" (ngSubmit)='loguear()'>
+<div class="container my-5 py-5">
+  <div class="d-flex justify-content-center">
+    <span class="border border-primary p-3 rounded ">
+      <form>
         <div class="form-group">
           <label for="exampleInputEmail1">Correo electronico</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="nombre" placeholder="Ingrese su correo">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su correo">
           <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo con nadie mas</small>
         </div>
         <div class="form-group">
@@ -17,7 +17,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Ingresar</button>
       </form>
-    </div>
+    </span>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
