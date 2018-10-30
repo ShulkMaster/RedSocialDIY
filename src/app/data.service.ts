@@ -1,27 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private MongoCon = require('mongodb').MongoClient;
-  private Database;
+  constructor(private http: HttpClient) { }
 
-  constructor() {
-    this.MongoCon.connect("mongodb://localhost:27017/red", function (err, db) {
-      if (err) throw err;
-      this.Database = db.db("red");
-      console.log("Conection successful");
-    });
+  someservice(){
+    return this.http.get('https://reqres.in/api/users');
   }
-
-  public ClosemongoData(){
-    this.MongoCon.db.close();
-  }
-
-  makeQuery(query: string){
-    return this.Database.collection('usuarios').findOne({query});
-  }
-
 }

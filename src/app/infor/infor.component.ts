@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class InforComponent implements OnInit {
 
-  maseegeform: FormGroup; 
+  maseegeform: FormGroup;
   submited: boolean = false;
   exito: boolean = false;
 
