@@ -30,6 +30,7 @@ body {
 
 .contenedorRED {
     width: 95%;
+    width: 100%;
     margin: auto;
     padding: 0.1em;
     max-width: 2500px;

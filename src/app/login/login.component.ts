@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    alert('hola'+ this.formlogin.controls.email.value);
+    alert('Alerta'+ this.formlogin.controls.email.value);
   }
 
 }

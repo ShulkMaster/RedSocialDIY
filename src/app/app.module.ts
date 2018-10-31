@@ -10,6 +10,9 @@ import { InforComponent } from './infor/infor.component';
 import { HomeComponent } from './home/home.component';
 import { GaleryComponent } from './galery/galery.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { LoginComponent } from './login/login.component';
     InforComponent,
     HomeComponent,
     GaleryComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    HomeScreenComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

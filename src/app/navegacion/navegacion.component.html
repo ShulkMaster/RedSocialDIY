@@ -1,28 +1,40 @@
 <header>
-  <div class="topbar">
-    <div class="logos"><img src="assets/img/main_logo.png" alt="Logo Ethernal"></div>
-    <div class="nave">
-      <nav>
-        <ul>
-          <li><a href="#">{{somevalue}}</a></li>
-          <li><a href="#">otros {{somevalue}}</a></li>
-        </ul>
-      </nav>
+  <div class="in-head">
+    <div class="Empresa">
+      <!--
+      <img src="assets/img/main_logo.png" alt="Logo RedSocial">
+      -->
     </div>
-    <div class="contenbar">
-      <div class="colorbox">
-        <div class="searchbox">
-          <input type="text" name="search-bar" placeholder="search">
-          <p>
-            <i class="fas fa-search"></i>
-          </p>
-        </div>
+    <nav class="list-nav">
+      <div class="ops">
+        <ul>
+          <li><a href="#">Opcion</a></li>
+          <li><a href="#">Opcion</a></li>
+          <li><a href="#">Opcion</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="contenbar">
+    <div class="colorbox">
+      <div class="searchbox">
+        <input type="text" name="search-bar" placeholder="Buscar...">
+        <p>
+          <i class="fas fa-search"></i>
+        </p>
       </div>
     </div>
-    <div class="Logboton">
-      <a routerLink="/infor">About us</a>
-      <a routerLink="/galery">Galery</a>
-      <a href="/login">Log In</a>
+  </div>
+
+  <div class="Connect">
+    <div>
+      <ul>
+        <li><a routerLink="/login">Iniciar Sesion</a></li>
+      </ul>
+    </div>
+    <div class="registro">
+      <span><a routerLink="/registro">Unirme</a></span>
     </div>
   </div>
 </header>
