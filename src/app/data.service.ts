@@ -12,18 +12,20 @@ export class DataService {
   private url: string= 'mongodb://localhost:27017';
 
   constructor(private http: HttpClient) {
-    this.cliente = require('mongodb').MongoClient.connect(this.url);
+    //this.cliente = require('mongodb').MongoClient.connect(this.url);
   }
 
   someservice() {
     return this.http.get('https://reqres.in/api/users');
   }
 
+  /*
   public async connect() {
     this.db = this.cliente.db('red');
     console.log("Connected to db");
     return this.db;
   }
+  */
 
 }
 
