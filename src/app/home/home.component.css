@@ -5,3 +5,17 @@
 .large{
     font-size: 8em;
 }
+
+.container {
+    margin:0%;
+    display: grid;
+    grid-template-columns: auto 50% auto;
+}
+
+.lateral-friends{
+    background-color: #393939;
+}
+
+.lateral-cat{
+    background-color: #393939;
+}

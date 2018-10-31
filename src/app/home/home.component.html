@@ -1,9 +1,29 @@
-<h1>Home</h1>
+<div class="container">
+  <div class="lateral-friends">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+<div>
+  <ul *ngIf="users">
+    <li *ngFor="let user of users.data">
+      <img [src]="user.avatar" alt="user.name">
+      <p>{{ user.first_name}} tupido {{ user.last_name}} </p>
+    </li>
 
-<ul *ngIf="users">
-  <li *ngFor = "let user of users.data">
-    <img [src]="user.avatar" alt="user.name">
-    <p>{{ user.first_name}} tupido {{ user.last_name}} </p>
-  </li>
-
-</ul>
+  </ul>
+</div>
+  <div class="lateral-cat">
+      <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+  </div>
+</div>
