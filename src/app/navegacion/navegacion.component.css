@@ -103,3 +103,15 @@ header {
     text-align: right;
     margin-bottom: 0;
 }
+
+.Connect a {
+    text-decoration: none;
+}
+
+.Connect ul li a {
+    color: #e7e7e7;
+}
+
+.Connect span a {
+    color: #2a2a2a;
+}
