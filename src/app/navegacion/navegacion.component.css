@@ -28,17 +28,23 @@ header {
     padding: 0em 1.5em;
 }
 
-.list-nav ul li{
+.list-nav ul {
+    margin: 0%;
+    padding: 0%;
+}
+.list-nav ul li {
     display: inline;
     padding: 0.5em;
 }
 
 .list-nav ul li a {
+    text-decoration: none;
     color: #e7e7e7;
     font-size: 0.8em;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
 }
+
 .Connect {
     display: grid;
     grid-template-columns: auto auto;
@@ -50,20 +56,31 @@ header {
     justify-content: center;
     align-items: center;
 }
+.Connect ul {
+    margin: 0%;
+    padding: 0%;
+}
 .Connect ul li {
     display: inline;
-    padding: 1.5em;
     font-size: 1em;
+    padding: 0.5em;
 }
+
 .Connect div {
+    padding: 1.5em;
+}
+
+.registro {
     padding: 1.5em;
     background-color:#f5f500;
 }
+
 .Connect div span {
     color: #000000;
 }
 /* Barra de busqueda*/
 .contenbar {
+    padding: 0.5%;
     width: 35%;
 }
 
@@ -88,7 +105,7 @@ header {
     border: none;
     background: none;
     outline: none;
-    padding: 0.5em;
+    padding: 0.59em;
     color: var(--color2);
     font-size: 1em;
     line-height: 0.4em;
@@ -98,7 +115,7 @@ header {
 .searchbox p {
     color: var(--color2);
     width: 10%;
-    padding: 0.8em;
+    padding: 0.2em;
     max-width: 50px;
     text-align: right;
     margin-bottom: 0;
