@@ -8,14 +8,33 @@
 
 .container {
     margin:0%;
+    padding: 0%;
     display: grid;
-    grid-template-columns: auto 50% auto;
+    grid-template-columns: 8% 80% auto;
 }
 
-.lateral-friends{
+.lateral{
     background-color: #393939;
 }
 
-.lateral-cat{
-    background-color: #393939;
+.lateral ul{
+    margin: 0%;
+    padding: 0%;
+}
+
+.lateral ul li {
+    display: block;
+    padding: 0.5em;
+}
+
+.lateral ul li a {
+    text-decoration: none;
+    color: #e7e7e7;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content{
+    padding: 2em;
 }

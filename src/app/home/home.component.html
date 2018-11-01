@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="lateral-friends">
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+  <div class="lateral">
+    <ul align="center">
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
     </ul>
   </div>
-<div>
+<div class="content">
   <ul *ngIf="users">
     <li *ngFor="let user of users.data">
       <img [src]="user.avatar" alt="user.name">
@@ -17,13 +17,13 @@
 
   </ul>
 </div>
-  <div class="lateral-cat">
-      <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+  <div class="lateral">
+      <ul align="center">
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
         </ul>
   </div>
 </div>
