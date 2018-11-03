@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   submited: boolean = false;
   exito: boolean = false;
 
-  constructor(private formmaker: FormBuilder) { 
+  constructor(private formmaker: FormBuilder, private data: DataService) { 
     this.formlogin = this.formmaker.group({
       email: ['', Validators.required],
       passwd: ['', Validators.required]
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    alert('Alerta'+ this.formlogin.controls.email.value);
+    this.data.isUser(this.formlogin.controls.email.value,this.formlogin.controls.passwd.value);
   }
 
 }
