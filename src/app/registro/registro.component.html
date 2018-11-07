@@ -4,13 +4,14 @@
       <div class="register">
           <p class="title">Logo</p>
           <div>
-              <input type="email" placeholder="Email" class="email">
+              <input type="email" placeholder="Email" class="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                title="Ingrese correo valido con sigiente formato: email@email.com" required>
               <input type="text" placeholder="User" class="user">
               <input type="text" placeholder="Password" class="password">
               <input type="text" placeholder="Repeat Password" class="rpassword"> 
           </div>
           <button class="button btn btn-primary">Bienvenido</button>
-          <p class="log">Ya estoy registrado. <a href="#">Iniciar Sesion</a></p>
+          <p class="log">Ya estoy registrado. <a href="/login">Iniciar Sesion</a></p>
       </div>
       <div class="session"></div>
   </div>

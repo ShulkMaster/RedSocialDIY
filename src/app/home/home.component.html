@@ -1,29 +1,9 @@
-<div class="contenedor">
-  <div class="lateral">
-    <ul align="center">
-      <li><a href="#">Friend Av</a></li>
-      <li><a href="#">Friend Av</a></li>
-      <li><a href="#">Friend Av</a></li>
-      <li><a href="#">Friend Av</a></li>
-      <li><a href="#">Friend Av</a></li>
+<div class="content">
+    <ul *ngIf="users">
+      <li *ngFor="let user of users.data">
+        <img [src]="user.avatar" alt="user.name">
+        <p>{{ user.first_name}} tupido {{ user.last_name}} </p>
+      </li>
+  
     </ul>
   </div>
-<div class="content">
-  <ul *ngIf="users">
-    <li *ngFor="let user of users.data">
-      <img [src]="user.avatar" alt="user.name">
-      <p>{{ user.first_name}} tupido {{ user.last_name}} </p>
-    </li>
-
-  </ul>
-</div>
-  <div class="lateral">
-      <ul align="center">
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        </ul>
-  </div>
-</div>
