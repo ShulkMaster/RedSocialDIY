@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'infor', component: InforComponent},
   { path: 'galery', component: GaleryComponent},
   { path: 'login', component: LoginComponent},
+<<<<<<< HEAD
   { path: 'registro', component: RegistroComponent},
 =======
   { path: 'registro', component: RegistroComponent}
