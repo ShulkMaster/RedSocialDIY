@@ -30,9 +30,11 @@ app.post('/srv', async (req, res) => {
     res.json({
       status: true,
       userdata: {
-        user: userdata.username,
+        username: userdata.username,
         name: userdata.name,
-        age: userdata.age
+        age: userdata.age,
+        favcolor: userdata.favcolor,
+        propicture: userdata.propicture
       }
     });
   }

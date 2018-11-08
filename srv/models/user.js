@@ -1,10 +1,12 @@
 const mongoC = require('mongoose');
 
 const UserModel = new mongoC.Schema({
-    username: String,
     name: String,
+    username: String,
     passwd: String,
-    age: Number
+    age: Number,
+    favcolor: {r: Number, g: Number, b: Number},
+    propicture: String
 });
 
 const userTemplate = mongoC.model('usuarios', UserModel);

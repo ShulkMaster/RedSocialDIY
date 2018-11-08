@@ -19,7 +19,8 @@ export class AuthService {
     })
   };
 
-  constructor(private http: HttpClient, public router: Router) { 
+  constructor(private http: HttpClient, public router: Router) {
+    console.log('auth contructor fired');
   }
 
   isUser(info: Object){
@@ -29,9 +30,9 @@ export class AuthService {
         console.log(data, 'gotten from server');
         this.itwork = data.status;
         console.log('value before', this.itwork);
-        this.myUser = new usuario(data.userdata);
         if(this.itwork){
-          this.router.navigate(['/home']);
+          this.myUser = new usuario(data.userdata);
+          this.router.navigate(['']);
         }
       });
   }
