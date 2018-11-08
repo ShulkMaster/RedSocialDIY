@@ -13,6 +13,9 @@ const routes: Routes = [
   { path: 'galery', component: GaleryComponent},
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent},
+=======
+  { path: 'registro', component: RegistroComponent}
+>>>>>>> 11923ce738dd26ddc253d56500ab490b31d993bd
 ];
 
 @NgModule({
