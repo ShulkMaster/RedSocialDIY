@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { RegistroComponent } from './registro/registro.component';
+import { AuthService } from './servicios/auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { RegistroComponent } from './registro/registro.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
