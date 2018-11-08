@@ -13,11 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { RegistroComponent } from './registro/registro.component';
-<<<<<<< HEAD
 import { AuthService } from './servicios/auth.service';
-=======
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
->>>>>>> 7ce8c3c69bbd09af402f6538e5df3f83f76412be
 
 @NgModule({
   declarations: [
