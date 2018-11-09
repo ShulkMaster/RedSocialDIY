@@ -1,18 +1,29 @@
 <div class="container row">
-  <div class="background  col-md-6"></div>
-  <div class="R-S col-md-6">
-      <div class="register">
-          <p class="title">Logo</p>
-          <div>
-              <input type="email" placeholder="Email" class="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-                title="Ingrese correo valido con sigiente formato: email@email.com" required>
-              <input type="text" placeholder="User" class="user">
-              <input type="text" placeholder="Password" class="password">
-              <input type="text" placeholder="Repeat Password" class="rpassword"> 
-          </div>
-          <button class="button btn btn-primary">Bienvenido</button>
-          <p class="log">Ya estoy registrado. <a href="/login">Iniciar Sesion</a></p>
-      </div>
-      <div class="session"></div>
-  </div>
+    <div class="background  col-md-6"></div>
+    <div class="col-md-6">
+        <div class="register">
+            <p class="title">Logo {{this.formregis.controls.conpasswd.invalid}} y {{this.formregis.controls.passwd.invalid}}</p>
+            <form [formGroup]="formregis" (ngSubmit)='registrar()'>
+                <div class="form-group">
+                    <label for="userMail">Correo Electronico</label>
+                    <input type="email" placeholder="Email" formControlName="email" id="userMail" class="email" title="Ingrese correo valido con sigiente formato: email@email.com" >
+                </div>
+                <div class="form-group">
+                    <label for="systemUser">Nombre de Usuario</label>
+                    <input type="text" placeholder="username" formControlName="username" id="systemUser" class="user">
+                </div>
+                <div class="form-group">
+                    <label for="upassword">Contraseña</label>
+                    <input type="password" placeholder="Contraseña" formControlName="passwd" id="upassword" class="password">
+                </div>
+                <div class="form-group">
+                        <label for="cupassword">Confirmar contraseña</label>
+                        <input type="password" placeholder="Contraseña" formControlName="passwd" id="cupassword" class="password">
+                </div>
+                <input type="submit" [disabled]="!formregis.valid" value="Registrarse">
+                <p class="log">Ya estoy registrado. <a routerLink="/login">Iniciar Sesion</a></p>
+            </form>
+        </div>
+        <div class="session"></div>
+    </div>
 </div>
