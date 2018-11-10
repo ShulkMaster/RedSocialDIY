@@ -52,7 +52,17 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar() {
-    console.log('ok registranod...');
+    console.log('ok registranod...',this.pickdata());
+    this.userSuscriber.resgisterUser(this.pickdata());
+  }
+
+  pickdata(){
+    const datapackage = {
+      email: this.formregis.controls.email.value,
+      username: this.formregis.controls.username.value,
+      passwd: this.formregis.controls.passwd.value
+    };
+    return datapackage;
   }
 
 

@@ -22,7 +22,10 @@ const config = {
 
 mongoC.Promise = global.Promise;
 
-mongoC.connect('mongodb://localhost:27017/red', config, function (err, db) {
+
+const URIS = 'mongodb://sovizeapp:O%2389tiOUsrG%24%2FWS65EG6GGwsE@142.93.252.111:35059/red';
+console.log(URIS);
+mongoC.connect( URIS, config, function (err, db) {
   if (err) throw err;
 }).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no primise'));
 
@@ -48,27 +51,28 @@ app.post('/srv', async (req, res) => {
 });
 
 app.post('/srv/register', async (req, res) => {
-  /*
-  const { email, passwd } = req.body;
-  const userdata = await usuario.save({ username, passwd });
-  if (!userdata) {
-    res.json({ status: false, error: 'User not found or wrong password' });
-    console.log('User not found', username);
-  } else {
-    console.log('Query result', userdata);
-    res.json({
-      status: true,
-      userdata: {
-        username: userdata.username,
-        name: userdata.name,
-        age: userdata.age,
-        favcolor: userdata.favcolor,
-        propicture: userdata.propicture
-      }
-    });
-  }*/
   console.log(req.body);
-  res.json({status: true, messege: 'fackiu man'});
+  const correo  = req.body.email;
+  const usuarion = req.body.username;
+  const password = req.body.passwd;
+  if (correo && usuarion && password) {
+    new usuario({email: correo, username: usuarion, passwd: password}).save(
+      function(err){
+        if(err){
+          res.json({ status: false, messege: 'No se pudo guardar el usuario' });
+          console.log('No se guardo el usuario', usuarion, err);
+        }else{
+          res.json({ status: true, messege: 'usuario creado con exito' });
+        }
+      }
+    );
+  }else {
+    res.json({
+      status: false,
+      messege: 'uno o mas datos faltan en el servidor: requeridos'
+    });
+    console.log('User not created', username);
+  }
 });
 
 server = app.listen(3551, () => console.log('Server runing'));
