@@ -25,12 +25,7 @@
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
-<<<<<<< HEAD
     "mongodb": "^3.1.9",
-=======
-    "express-session": "^1.15.6",
-    "mongodb": "^3.1.8",
->>>>>>> b262152a817a1eb07fc589b76ad39595af2becc6
     "mongoose": "^5.3.9",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
