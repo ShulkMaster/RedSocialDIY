@@ -1,40 +1,40 @@
-<header>
-  <div class="in-head">
-    <div class="Empresa">
-      <!--
+<header *ngIf="!user">
+    <div class="in-head">
+      <div class="Empresa">
+        <!--
       <img src="assets/img/main_logo.png" alt="Logo RedSocial">
       -->
+      </div>
+      <nav class="list-nav">
+        <div class="ops">
+          <ul>
+            <li><a routerLink="">Home</a></li>
+            <li><a href="#">Opcion</a></li>
+            <li><a routerLink="/profile">Profile temp</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <nav class="list-nav">
-      <div class="ops">
+
+    <div class="contenbar">
+      <div class="colorbox">
+        <div class="searchbox">
+          <input type="text" name="search-bar" placeholder="Buscar...">
+          <p>
+            <i class="fas fa-search"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="Connect">
+      <div>
         <ul>
-          <li><a routerLink="/profile">Profile temp</a></li>
-          <li><a href="#">Opcion</a></li>
-          <li><a routerLink="">Home</a></li>
+          <li><a routerLink="/login">Iniciar Sesion</a></li>
         </ul>
       </div>
-    </nav>
-  </div>
-
-  <div class="contenbar">
-    <div class="colorbox">
-      <div class="searchbox">
-        <input type="text" name="search-bar" placeholder="Buscar...">
-        <p>
-          <i class="fas fa-search"></i>
-        </p>
+      <div class="registro">
+        <span><a routerLink="/registro">Unirme</a></span>
       </div>
     </div>
-  </div>
-
-  <div class="Connect">
-    <div>
-      <ul>
-        <li><a routerLink="/login">Iniciar Sesion</a></li>
-      </ul>
-    </div>
-    <div class="registro">
-      <span><a routerLink="/registro">Unirme</a></span>
-    </div>
-  </div>
 </header>
