@@ -15,7 +15,7 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Terminos y condiciones</label>
         </div>
-        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <input type="submit" [disabled]="!formlogin.valid" value="Ingresar" class="btn btn-primary">
       </form>
     </span>
   </div>

@@ -1,9 +1,8 @@
 <div class="content">
-    <ul *ngIf="users">
-      <li *ngFor="let user of users.data">
-        <img [src]="user.avatar" alt="user.name">
-        <p>{{ user.first_name}} tupido {{ user.last_name}} </p>
+    <ul *ngIf="user">
+      <li>
+        <img [src]="user.picture" alt="user.name">
+        <p>{{ user.name}} tupido {{ user.edad}} </p>
       </li>
-  
     </ul>
-  </div>
+</div>

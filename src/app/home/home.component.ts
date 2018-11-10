@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../data.service';
+import { AuthService } from '../servicios/auth.service';
+import { usuario } from '../classes/usuario';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,17 @@ import {DataService} from '../data.service';
 })
 export class HomeComponent implements OnInit {
 
-  users: Object;
+  user: usuario;
   
-  constructor(private data: DataService) {
-
+  constructor(private loger: AuthService) {
+    this.user = loger.myUser;
+    console.log('Home constructor fired', this.user);
   }
 
   ngOnInit() {
-    this.data.someservice().subscribe(data =>{
-      this.users = data;
-      console.log(data);
-    });
+    if(this.user){
+      console.log(this.user)
+    }
   }
-
-
 
 }
