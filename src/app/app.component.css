@@ -9,3 +9,12 @@ footer{
     color: azure;
     background-color: #2a2a2a;
 }
+
+footer div {
+    padding: 0.7%
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
