@@ -1,75 +1,9 @@
-body {
-    width: 100%;
-    height: 100%;
-    background-color: #d4d3d3;
+* {
+    margin: 0%;
+    padding: 0%;
 }
 
-.container {
-    margin: 0 auto;
-    margin-top: 10em;
-    width: 80%;
-}
-
-.background {
-    background-image: url(../../assets/img/DIY.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 50%;
-    height: 300px;
-    position: relative;
-    top: 70px;
-}
-
-.R-S {
-    width: 50%;
+.form-control.userLog {
+    border: 0px solid !important;
     margin-top: 1em;
-    border: 2px solid grey;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #f0efef;
-    height: 450px;
-}
-
-.title {
-    margin: 0;
-    margin-top: 2em;
-    text-align: center;
-}
-
-.R-S form {
-    margin: 0 auto;
-    width: 80%;
-}
-
-.email {
-    width: 100%;
-    margin-top: 2em;
-
-}
-
-.user {
-    width: 100%;
-    margin-top: 2em;
-
-}
-
-.password {
-    width: 100%;
-    margin-top: 2em;
-
-}
-
-.rpassword {
-    width: 100%;
-    margin-top: 2em;
-
-}
-
-.button {
-    margin-top: 2em;
-}
-
-.log {
-    margin: 1em;
 }
