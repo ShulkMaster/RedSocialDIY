@@ -1,5 +1,5 @@
 <div class="contentt">
-    <ul>
+    <ul *ngIf="user">
       <li>
         <img [src]="user.picture" alt="user.name">
         <p>{{ user.name}} tupido {{ user.edad}} </p>
