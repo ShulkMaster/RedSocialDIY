@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegistroComponent } from './registro/registro.component';
 import { AuthService } from './servicios/auth.service';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
     LoginComponent,
     ProfileComponent,
     RegistroComponent,
-    ConfiguracionComponent
+    ConfiguracionComponent,
+    PublicacionComponent
   ],
   imports: [
     BrowserModule,
