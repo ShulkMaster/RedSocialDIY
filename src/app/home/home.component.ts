@@ -10,15 +10,15 @@ import { usuario } from '../classes/usuario';
 export class HomeComponent implements OnInit {
 
   user: usuario;
-  
+
   constructor(private loger: AuthService) {
-    this.user = loger.myUser;
     console.log('Home constructor fired', this.user);
   }
 
   ngOnInit() {
-    if(this.user){
-      console.log(this.user)
+    if (this.loger.itwork) {
+      this.user = this.loger.myUser;
+      console.log(this.user);
     }
   }
 

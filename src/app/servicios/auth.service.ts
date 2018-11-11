@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   myUser: usuario;
-  itwork: boolean = false;
+  itwork = false;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,27 +23,27 @@ export class AuthService {
     console.log('auth contructor fired');
   }
 
-  isUser(info: Object){
+  isUser(info: Object) {
     console.log(info, 'Send to server on login');
-    this.http.post('/srv',info).subscribe(
+    this.http.post('/srv', info).subscribe(
       (data: any) => {
         console.log(data, 'gotten from server on login');
         this.itwork = data.status;
         console.log('value before', this.itwork);
-        if(this.itwork){
+        if (this.itwork) {
           this.myUser = new usuario(data.userdata);
           this.router.navigate(['']);
         }
       });
   }
 
-  resgisterUser(uinfo: any){
+  resgisterUser(uinfo: any) {
     console.log(uinfo, 'Send to server on register');
     this.http.post('/srv/register', uinfo).subscribe(
       (data: any) => {
         console.log(data, 'gotten from server on register');
       },
-      error =>{
+      error => {
         console.log(error);
       }
     );
