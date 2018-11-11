@@ -59,7 +59,7 @@ app.post('/srv/register', async (req, res) => {
     new usuario({email: correo, username: usuarion, passwd: password}).save(
       function(err){
         if(err){
-          res.json({ status: false, messege: 'No se pudo guardar el usuario' });
+          res.json({ status: false, messege: 'No se pudo guardar el usuario, Uno o mas valores unicos han sido repetidos' });
           console.log('No se guardo el usuario', usuarion, err);
         }else{
           res.json({ status: true, messege: 'usuario creado con exito' });
