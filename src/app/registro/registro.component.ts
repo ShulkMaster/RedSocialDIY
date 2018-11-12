@@ -52,11 +52,11 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar() {
-    console.log('ok registranod...',this.pickdata());
+    console.log('ok registranod...', this.pickdata());
     this.userSuscriber.resgisterUser(this.pickdata());
   }
 
-  pickdata(){
+  pickdata() {
     const datapackage = {
       email: this.formregis.controls.email.value,
       username: this.formregis.controls.username.value,
@@ -65,5 +65,14 @@ export class RegistroComponent implements OnInit {
     return datapackage;
   }
 
+  status(): void {
+    const elemento = (<HTMLInputElement>document.getElementById("exampleCheck1")).checked;
+    if(elemento==true){
+      (<HTMLButtonElement>document.getElementById("registro")).disabled=false;
+    }
+    else{
+      (<HTMLButtonElement>document.getElementById("registro")).disabled=true;
+    }
+  }
 
 }
