@@ -65,14 +65,4 @@ export class RegistroComponent implements OnInit {
     return datapackage;
   }
 
-  status(): void {
-    const elemento = (<HTMLInputElement>document.getElementById("exampleCheck1")).checked;
-    if(elemento==true){
-      (<HTMLButtonElement>document.getElementById("registro")).disabled=false;
-    }
-    else{
-      (<HTMLButtonElement>document.getElementById("registro")).disabled=true;
-    }
-  }
-
 }
