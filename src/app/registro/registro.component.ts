@@ -65,4 +65,16 @@ export class RegistroComponent implements OnInit {
     return datapackage;
   }
 
+  status(): boolean {
+    let elemento: boolean = (<HTMLInputElement>document.getElementById("exampleCheck1")).checked;
+    if(elemento==true){
+      let estado: boolean = (<HTMLButtonElement>document.getElementById("registro")).disabled=false;
+      return estado;
+    }
+    else if(elemento==false){
+      let estado: boolean = (<HTMLButtonElement>document.getElementById("registro")).disabled=true;
+      return estado;
+    }
+  }
+
 }
