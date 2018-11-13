@@ -9,10 +9,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class InforComponent implements OnInit {
 
   maseegeform: FormGroup;
-  submited: boolean = false;
-  exito: boolean = false;
+  submited = false;
+  exito = false;
 
-  constructor(private formmaker: FormBuilder) { 
+  constructor(private formmaker: FormBuilder) {
     this.maseegeform = this.formmaker.group({
       nombre: ['', Validators.required],
       textmesaqje: ['', Validators.required],
@@ -23,10 +23,10 @@ export class InforComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submited = true;
 
-    if(this.maseegeform.invalid){
+    if (this.maseegeform.invalid) {
       return;
     }
     alert('Mensaje enviado');

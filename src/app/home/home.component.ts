@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { AuthService } from '../servicios/auth.service';
 import { usuario } from '../classes/usuario';
 
@@ -11,8 +12,8 @@ export class HomeComponent implements OnInit {
 
   user: usuario;
 
-  constructor(private loger: AuthService) {
-    console.log('Home constructor fired', this.user);
+  constructor(private loger: AuthService, private dataserver: DataService) {
+    console.log('Home constructor fired from home', this.user);
   }
 
   ngOnInit() {
@@ -20,6 +21,14 @@ export class HomeComponent implements OnInit {
       this.user = this.loger.myUser;
       console.log(this.user);
     }
+  }
+
+  dodata() {
+    console.log('data reached');
+   this.dataserver.getpostfeed().subscribe(
+      (data: any) => {
+        console.log('goteen from API:', data);
+      });
   }
 
 }

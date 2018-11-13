@@ -11,8 +11,8 @@ import { AuthService } from '../servicios/auth.service';
 export class RegistroComponent implements OnInit {
 
   formregis: FormGroup;
-  submited: boolean = false; // Este booleano se usa para hacer cambiso en el css si se envia y fallan las validadciones
-  exito: boolean = false; //este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
+  submited = false; // Este booleano se usa para hacer cambiso en el css si se envia y fallan las validadciones
+  exito = false; // este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
 
   constructor(private formmaker: FormBuilder, private userSuscriber: AuthService) {
     this.formregis = new FormGroup({});
@@ -36,7 +36,7 @@ export class RegistroComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])"))
+          Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
         ]
       ));
 
@@ -52,11 +52,11 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar() {
-    console.log('ok registranod...',this.pickdata());
+    console.log('ok registranod...', this.pickdata());
     this.userSuscriber.resgisterUser(this.pickdata());
   }
 
-  pickdata(){
+  pickdata() {
     const datapackage = {
       email: this.formregis.controls.email.value,
       username: this.formregis.controls.username.value,
