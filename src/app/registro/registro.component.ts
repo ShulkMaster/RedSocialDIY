@@ -46,6 +46,9 @@ export class RegistroComponent implements OnInit {
         null,
         [
           Validators.required
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
         ]
       )
     );
