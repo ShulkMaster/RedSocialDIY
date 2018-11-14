@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { AuthService } from '../servicios/auth.service';
-import { usuario } from '../classes/usuario';
+import { Usuario } from '../classes/usuario';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +10,16 @@ import { usuario } from '../classes/usuario';
 })
 export class HomeComponent implements OnInit {
 
-  user: usuario;
+  user: Usuario;
 
   constructor(private loger: AuthService, private dataserver: DataService) {
-    console.log('Home constructor fired from home', this.user);
+    console.log('Home constructor fired from home');
   }
 
   ngOnInit() {
-    if (this.loger.itwork) {
+    if (!this.user) {
       this.user = this.loger.myUser;
-      console.log(this.user);
+      console.log('this is the user from home', this.user);
     }
   }
 

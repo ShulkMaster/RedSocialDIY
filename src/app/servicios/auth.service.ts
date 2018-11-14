@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { usuario } from '../classes/usuario';
+import { Usuario } from '../classes/usuario';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -9,19 +9,27 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
-  myUser: usuario;
+  myUser: Usuario;
   itwork = false;
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'my-auth-token'
-    })
-  };
 
   constructor(private http: HttpClient, public router: Router) {
     console.log('auth contructor fired');
+    this.getUser();
+    console.log('this is my user now', this.myUser);
   }
+
+  private  getUser() {
+     this.http.get('/srv/prueba').subscribe(
+      (data: any) => {
+        console.log('gotten from server on getuser', data);
+        if (data) {
+          this.myUser = new Usuario(data);
+          this.itwork = true;
+        }
+      }
+    );
+  }
+
 
   isUser(info: Object) {
     console.log(info, 'Send to server on login');
@@ -31,7 +39,7 @@ export class AuthService {
         this.itwork = data.status;
         console.log('value before', this.itwork);
         if (this.itwork) {
-          this.myUser = new usuario(data.userdata);
+          this.myUser = new Usuario(data.userdata);
           this.router.navigate(['']);
         }
       });

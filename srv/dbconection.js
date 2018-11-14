@@ -2,13 +2,10 @@
 
 const express = require('express');
 const session = require('express-session');
-//const bodyp = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoC = require('mongoose');
 const logger = require('morgan');
-//const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
-//const LocalStrategy = require('passport-local').Strategy;
 const usuario = require('./models/user');
 const app = express();
 var server;
@@ -42,13 +39,10 @@ app.use(session({
   }
 }));
 
-//app.use(passport.initialize());
-//app.use(passport.session());
-
-//passport.use(usuario.createStrategy());
-//passport.serializeUser(usuario.serializeUser());
-//passport.deserializeUser(usuario.deserializeUser());
-
+app.get('/srv/prueba', async function (req, res) {
+  console.log('data almacendad en sesion', req.session);
+  res.json(req.session.userdata);
+});
 
 app.post('/srv/prueba', async function (req, res) {
   const { username, passwd } = req.body;
@@ -58,17 +52,11 @@ app.post('/srv/prueba', async function (req, res) {
     console.log('User not found', username);
   } else {
     console.log('Query result', reduser);
+    req.session.userdata = reduser;
     res.json({
       status: true,
-      userdata: {
-        username: reduser.username,
-        name: reduser.name,
-        age: reduser.age,
-        favcolor: reduser.favcolor,
-        propicture: reduser.propicture
-      }
+      userdata: reduser
     });
-    req.user = reduser;
   }
 });
 
