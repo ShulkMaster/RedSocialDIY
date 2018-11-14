@@ -45,7 +45,9 @@ export class RegistroComponent implements OnInit {
       new FormControl(
         null,
         [
-          Validators.required
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
         ]
       )
     );
@@ -88,16 +90,24 @@ export class RegistroComponent implements OnInit {
     let elemento = this.formregis.controls.checkb.value;
     let passw = this.formregis.controls.passwd.value;
     let conpassw = this.formregis.controls.conpasswd.value;
-    if(passw==conpassw && elemento==false){
+    let em = this.formregis.controls.email.valid;
+    console.log(em);
+    if(em==true && passw==conpassw && elemento==false){
       return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
     }
-    else if(passw==conpassw && elemento==true){
+    else if(em==true && passw==conpassw && elemento==true){
       return (<HTMLButtonElement> document.getElementById("registro")).disabled=false;
     }
-    else if(passw!=conpassw && elemento==false){
+    else if(em==true && passw!=conpassw && elemento==false){
       return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
     }
-    else if(passw!=conpassw && elemento==true){
+    else if(em==true && passw!=conpassw && elemento==true){
+      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
+    }
+    else if(em!=true && passw==conpassw && elemento==false){
+      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
+    }
+    else if(em!=true && passw==conpassw && elemento==true){
       return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
     }
   }
