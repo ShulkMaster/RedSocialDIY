@@ -14,7 +14,7 @@ export class RegistroComponent implements OnInit {
   submited: boolean = false; // Este booleano se usa para hacer cambiso en el css si se envia y fallan las validadciones
   exito: boolean = false; //este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
 
-  constructor(private formmaker: FormBuilder, private userSuscriber: AuthService) {
+  constructor(private formmaker: FormBuilder, private userSuscriber: AuthService, private formBuilder: FormBuilder) {
     this.formregis = new FormGroup({});
   }
 
@@ -49,6 +49,13 @@ export class RegistroComponent implements OnInit {
         ]
       )
     );
+
+    this.formregis.addControl(
+      'checkb', new FormControl(
+        false,
+        [Validators.requiredTrue]
+      )
+    );
   }
 
   registrar() {
@@ -65,15 +72,33 @@ export class RegistroComponent implements OnInit {
     return datapackage;
   }
 
-  status(): boolean {
+  status(): void {
     let elemento: boolean = (<HTMLInputElement>document.getElementById("exampleCheck1")).checked;
     if(elemento==true){
       let estado: boolean = (<HTMLButtonElement>document.getElementById("registro")).disabled=false;
-      return estado;
+      console.log("Estoy activo");
     }
     else if(elemento==false){
       let estado: boolean = (<HTMLButtonElement>document.getElementById("registro")).disabled=true;
-      return estado;
+      console.log("No estoy activo");
+    }
+  }
+  
+  estado(): boolean {
+    let elemento = this.formregis.controls.checkb.value;
+    let passw = this.formregis.controls.passwd.value;
+    let conpassw = this.formregis.controls.conpasswd.value;
+    if(passw==conpassw && elemento==false){
+      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
+    }
+    else if(passw==conpassw && elemento==true){
+      return (<HTMLButtonElement> document.getElementById("registro")).disabled=false;
+    }
+    else if(passw!=conpassw && elemento==false){
+      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
+    }
+    else if(passw!=conpassw && elemento==true){
+      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
     }
   }
 

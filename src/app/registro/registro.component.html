@@ -1,7 +1,7 @@
 <div id="registro">
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-xs-6 col-sm-12 col-md-6 mt-5">
+            <div class="col-6 col-xs-6 col-sm-12 col-md-6 mt-5">
                 <div class="card_registro">
                     <div class="card">
                         <div class="card-body text-center">
@@ -11,52 +11,54 @@
                                     {{this.formregis.controls.passwd.invalid}}
                                 </h1>
 
-                                <div class="form-group col-md-12 mb-2">
+                                <div class="form-group col-12 col-xs-12 col-sm-12 col-md-12 mb-2">
                                     <div class="row">
-                                        <label for="systemUser" class="col-md-4">Nombre de Usuario</label>
-                                        <input type="text" id="systemUser" name="username" class="user col-md-4"
+                                        <label for="systemUser" class="col-4 col-xs-4 col-sm-4 col-md-4">Nombre de
+                                            Usuario</label>
+                                        <input type="text" id="systemUser" name="username" class="user 
+                                        col-5 col-xs-5 col-sm-5 col-md-5"
                                             placeholder="User Name" formControlName="username">
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-12 mb-2">
+                                <div class="form-group col-12 col-xs-12 col-sm-12 col-md-12 mb-2">
                                     <div class="row">
-                                        <label for="userMail" class="col-md-4">Correo Electronico</label>
+                                        <label for="userMail" class="col-4 col-xs-4 col-sm-4 col-md-4">Correo
+                                            Electronico</label>
                                         <input type="email" placeholder="Email" formControlName="email" id="userMail"
-                                            class="email col-md-4" title="Ingrese correo valido">
+                                            class="email col-5 col-xs-5 col-sm-5 col-md-5" title="Ingrese correo valido">
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-12 mb-2">
+                                <div class="form-group col-12 col-xs-12 col-sm-12 col-md-12 mb-2">
                                     <div class="row">
-                                        <label for="upassword" class="col-md-4">Contraseña</label>
+                                        <label for="upassword" class="col-4 col-xs-4 col-sm-4 col-md-4">Contraseña</label>
                                         <input type="password" placeholder="Contraseña" formControlName="passwd" id="upassword"
-                                            class="password col-md-4">
+                                            class="password col-5 col-xs-5 col-sm-5 col-md-5">
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-12 mb-4">
+                                <div class="form-group col-12 col-xs-12 col-sm-12 col-md-12 mb-4">
                                     <div class="row">
-                                        <label for="cupassword" class="col-md-4">Confirmar contraseña</label>
-                                        <input type="password" placeholder="Contraseña" formControlName="passwd" id="cupassword"
-                                            class="password col-md-4">
+                                        <label for="cupassword" class="col-4 col-xs-4 col-sm-4 col-md-4">Confirmar
+                                            contraseña</label>
+                                        <input type="password" placeholder="Contraseña" formControlName="conpasswd" id="cupassword"
+                                            class="password col-5 col-xs-5 col-sm-5 col-md-5">
                                     </div>
                                 </div>
 
-                                <div class="form-group form-check col-md-12 mb-4">
-                                    <input type="checkbox" class="form-check-input col-md-8" id="exampleCheck1">
-                                    <label class="form-check-label col-md-12" for="exampleCheck1">Terminos y
-                                        condiciones</label>
+                                <div class="form-group form-check col-xs-6 col-sm-12 col-md-12">
+                                    <input type="checkbox" class="form-check-input col-1 col-xs-1 col-sm-1 col-md-1" id="exampleCheck1"
+                                        formControlName="checkb">
+                                    <label class="form-check-label col-6 col-xs-4 col-sm-4 col-md-4" for="exampleCheck1">Terminos</label>
                                 </div>
-
-                                <button type="submit" class="btn btn-lg btn-primary btn-block w-50 mb-2" id="registro">
-                                    Registarse
+                                <button type="submit" class="btn btn-lg btn-primary btn-block mb-2 col-6 col-xs-6 col-sm-6 col-md-6"
+                                    id="registro" [disabled]="estado()">
+                                    Registrarse
                                 </button>
-
                                 <div class="form-group col-md-12 mb-2">
                                     <a routerLink="/user/login" class="form-control userLog">Ya estas registrado?</a>
                                 </div>
-                                
                             </form>
                         </div>
                     </div>
