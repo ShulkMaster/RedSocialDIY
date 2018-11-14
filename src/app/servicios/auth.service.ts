@@ -25,7 +25,7 @@ export class AuthService {
 
   isUser(info: Object) {
     console.log(info, 'Send to server on login');
-    this.http.post('/srv', info).subscribe(
+    this.http.post('/srv/prueba', info).subscribe(
       (data: any) => {
         console.log(data, 'gotten from server on login');
         this.itwork = data.status;
