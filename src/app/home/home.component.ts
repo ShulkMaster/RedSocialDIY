@@ -25,10 +25,18 @@ export class HomeComponent implements OnInit {
 
   dodata() {
     console.log('data reached');
-   this.dataserver.getpostfeed().subscribe(
+    this.dataserver.getpostfeed().subscribe(
       (data: any) => {
         console.log('goteen from API:', data);
       });
+  }
+
+  checkuserage() {
+    if (this.loger.myUser.edad >= 10) {
+      console.log('su usuario si es mayor de eedad', this.loger.myUser);
+      return true;
+    }
+    return false;
   }
 
 }

@@ -10,13 +10,31 @@ const MongoStore = require('connect-mongo')(session);
 const LocalStrategy = require('passport-local').Strategy;
 const usuario = require('./models/user');
 const app = express();
+var logger = require('morgan');
+var server;
+
 const config = {
   useNewUrlParser: true,
 };
-var server;
 
-app.use(bodyp.json());
-app.use(cookieParser('sodsgsdgsdgsgsd'));
+mongoC.Promise = global.Promise;
+
+const URIS = 'mongodb://sovizeapp:O%2389tiOUsrG%24%2FWS65EG6GGwsE@142.93.252.111:35059/red';
+console.log(URIS);
+mongoC.connect(URIS, config, function (err, db) {
+  if (err) throw err;
+}).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no primise'));
+
+
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({
+
+  extended: false
+
+}));
 app.use(session({
   secret: 'sodsgsdgsdgsgsd',
   name: 'usersesion',
@@ -26,19 +44,20 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(usuario.createStrategy());
 passport.serializeUser(usuario.serializeUser());
 passport.deserializeUser(usuario.deserializeUser());
 
 
-mongoC.Promise = global.Promise;
 
-
-const URIS = 'mongodb://sovizeapp:O%2389tiOUsrG%24%2FWS65EG6GGwsE@142.93.252.111:35059/red';
-console.log(URIS);
-mongoC.connect(URIS, config, function (err, db) {
-  if (err) throw err;
-}).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no primise'));
+app.post('/login', function(req,res){
+  console.log('hola :3', req.user, req.body);
+  passport.authenticate('local')(req, res, function () {
+    console.log(req.user);
+    res.json({status: true});
+  });
+});
 
 app.post('/srv/prueba', passport.authenticate('local'), async function (req, res) {
   const { username, passwd } = req.body;
@@ -114,6 +133,7 @@ app.get('/srv/posts', async (req, res) => {
   console.log('to post user:', req.user);
   res.json({ info: 'usuerdata', data: req.session.userdata });
 });
+
 
 server = app.listen(3551, () => console.log('Server runing'));
 
