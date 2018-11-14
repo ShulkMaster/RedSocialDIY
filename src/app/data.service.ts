@@ -13,5 +13,8 @@ export class DataService {
     return this.http.get('https://reqres.in/api/users');
   }
 
+  getpostfeed() {
+    return this.http.get('/srv/posts');
+  }
 }
 

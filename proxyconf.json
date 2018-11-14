@@ -3,5 +3,10 @@
         "target": "http://localhost:3551",
         "secure": false,
         "ChangeOrigin": true
+    },
+    "/login":{
+        "target": "http://localhost:3551",
+        "secure": false,
+        "ChangeOrigin": true
     }
 }
