@@ -71,35 +71,4 @@ export class RegistroComponent implements OnInit {
     };
     return datapackage;
   }
-
-  status(): void {
-    let elemento: boolean = (<HTMLInputElement>document.getElementById("exampleCheck1")).checked;
-    if(elemento==true){
-      let estado: boolean = (<HTMLButtonElement>document.getElementById("registro")).disabled=false;
-      console.log("Estoy activo");
-    }
-    else if(elemento==false){
-      let estado: boolean = (<HTMLButtonElement>document.getElementById("registro")).disabled=true;
-      console.log("No estoy activo");
-    }
-  }
-  
-  estado(): boolean {
-    let elemento = this.formregis.controls.checkb.value;
-    let passw = this.formregis.controls.passwd.value;
-    let conpassw = this.formregis.controls.conpasswd.value;
-    if(passw==conpassw && elemento==false){
-      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
-    }
-    else if(passw==conpassw && elemento==true){
-      return (<HTMLButtonElement> document.getElementById("registro")).disabled=false;
-    }
-    else if(passw!=conpassw && elemento==false){
-      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
-    }
-    else if(passw!=conpassw && elemento==true){
-      return (<HTMLButtonElement> document.getElementById("registro")).disabled=true;
-    }
-  }
-
 }

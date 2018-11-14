@@ -6,11 +6,7 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <form [formGroup]="formregis" (ngSubmit)='registrar()' class="row justify-content-md-center">
-                                <h1 class="he mb-3 font-weight-normal mt-2 mb-4">Registro
-                                    {{this.formregis.controls.conpasswd.invalid}} y
-                                    {{this.formregis.controls.passwd.invalid}}
-                                </h1>
-
+                                <h1 class="he mb-3 font-weight-normal mt-2 mb-4">Registro</h1>
                                 <div class="form-group col-12 col-xs-12 col-sm-12 col-md-12 mb-2">
                                     <div class="row">
                                         <label for="systemUser" class="col-4 col-xs-4 col-sm-4 col-md-4">Nombre de
@@ -50,11 +46,18 @@
                                 <div class="form-group form-check col-xs-6 col-sm-12 col-md-12">
                                     <input type="checkbox" class="form-check-input col-1 col-xs-1 col-sm-1 col-md-1" id="exampleCheck1"
                                         formControlName="checkb">
-                                    <label class="form-check-label col-6 col-xs-4 col-sm-4 col-md-4" for="exampleCheck1">Aceptar Terminos
+                                    <label class="form-check-label col-6 col-xs-4 col-sm-4 col-md-4" for="exampleCheck1">Aceptar
+                                        Terminos
                                         y Condiciones</label>
+                                        <p>invalid username {{this.formregis.controls.username.invalid}}</p>
+                                        <p>invalid email {{this.formregis.controls.email.invalid}}</p>
+                                        <p>invalid password {{this.formregis.controls.passwd.invalid}}</p>
+                                        <p>invalid confirm password {{this.formregis.controls.conpasswd.invalid}}</p>
+                                        <p>invalid checknox {{this.formregis.controls.checkb.invalid}}</p>
+                                        <p>Todo invalido {{this.formregis.valid}}</p>
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-primary btn-block mb-2 col-6 col-xs-6 col-sm-6 col-md-6"
-                                    id="registro" [disabled]="estado()">
+                                    id="registro" [disabled]="!this.formregis.valid">
                                     Registrarse
                                 </button>
                                 <div class="form-group col-md-12 mb-2">
