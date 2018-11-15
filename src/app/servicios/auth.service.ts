@@ -16,6 +16,22 @@ export class AuthService {
     console.log('auth contructor fired');
   }
 
+  getSession(cb) {
+    if (!this.myUser) {
+        this.getUser().subscribe((data: any) => {
+          console.log('desde API session', data);
+          if (data.status) {
+            this.myUser = data.userdata;
+            this.logeado = data.status;
+            cb();
+          } else {
+            cb({err: 'no se puede ..'} );
+          }
+        });
+    } else {
+      cb();
+    }
+  }
 
   getUser() {
     return this.http.get('/srv/login');

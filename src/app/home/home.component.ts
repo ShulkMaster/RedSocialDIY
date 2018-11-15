@@ -21,25 +21,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.loger.myUser) {
-      this.loger.getUser().subscribe((data: any) => {
-        console.log('desde API session', data);
-        if (data.status) {
-          this.loger.myUser = new Usuario(data.userdata);
-          this.user = this.loger.myUser;
-          this.loger.logeado = data.status;
-          console.log('this is the user from home on remote server call', this.user);
-        }
-      });
-    } else {
-      console.log('Usuario session already exist from home');
-      this.user = this.loger.myUser;
-    }
+    this.loger.getSession(function(err) {
+      if (err) {
+        console.log('Hubo un error', err);
+      }
+      console.log('WOOO');
+    });
+
     this.dataserver.getpostfeed().subscribe((info: any) => {
       if (info.status) {
         info.data.forEach(element => {
           console.log('este elemneto es una publicacion', element);
-          this.publicaciones.push(new PublicacionComponent());
+          // this.publicaciones.push(new PublicacionComponent(element));
         });
       }
     });

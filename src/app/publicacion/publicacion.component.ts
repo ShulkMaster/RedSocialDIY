@@ -20,13 +20,13 @@ export class PublicacionComponent implements OnInit {
     console.log('publicacion contructor fired');
     /*
     this.titulo = datafeed.titulo;
-        this.autor = datafeed.autor;
-        this.contenido = datafeed.contenido;
-        this.map = datafeed.map;
-        this.publish = datafeed.publish;
-        this.version = datafeed.version;
-        this.views = datafeed.views;
-        */
+    this.autor = datafeed.autor;
+    this.contenido = datafeed.contenido;
+    this.map = datafeed.map;
+    this.publish = datafeed.publish;
+    this.version = datafeed.version;
+    this.views = datafeed.views;
+    */
   }
 
   ngOnInit() {
