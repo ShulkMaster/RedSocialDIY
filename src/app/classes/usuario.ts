@@ -1,6 +1,6 @@
-import { color } from './color'
+import { color } from './color';
 
-export class usuario{
+export class Usuario {
 
     name: string;
     username: string;
@@ -9,8 +9,8 @@ export class usuario{
     favcolor: color;
     picture: string;
 
-    constructor(info: any){
-        console.log(info);
+    constructor(info: any) {
+        console.log('from user class TS:', info);
         this.name = info.name;
         this.username = info.username;
         this.edad = info.age;

@@ -2,15 +2,12 @@
 
 const express = require('express');
 const session = require('express-session');
-const bodyp = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoC = require('mongoose');
-const passport = require('passport');
+const logger = require('morgan');
 const MongoStore = require('connect-mongo')(session);
-const LocalStrategy = require('passport-local').Strategy;
 const usuario = require('./models/user');
 const app = express();
-var logger = require('morgan');
 var server;
 
 const config = {
@@ -30,36 +27,24 @@ mongoC.connect(URIS, config, function (err, db) {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.urlencoded({
-
-  extended: false
-
-}));
+app.use(express.urlencoded({ extended: false }));
 app.use(session({
   secret: 'sodsgsdgsdgsgsd',
   name: 'usersesion',
   store: new MongoStore({ mongooseConnection: mongoC.connection }),
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000*60*60*24
+  }
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 
-passport.use(usuario.createStrategy());
-passport.serializeUser(usuario.serializeUser());
-passport.deserializeUser(usuario.deserializeUser());
-
-
-
-app.post('/login', function(req,res){
-  console.log('hola :3', req.user, req.body);
-  passport.authenticate('local')(req, res, function () {
-    console.log(req.user);
-    res.json({status: true});
-  });
+app.get('/srv/prueba', async function (req, res) {
+  console.log('data almacendad en sesion', req.session);
+  res.json(req.session.userdata);
 });
 
-app.post('/srv/prueba', passport.authenticate('local'), async function (req, res) {
+app.post('/srv/prueba', async function (req, res) {
   const { username, passwd } = req.body;
   const reduser = await usuario.findOne({ username, passwd });
   if (!reduser) {
@@ -67,17 +52,11 @@ app.post('/srv/prueba', passport.authenticate('local'), async function (req, res
     console.log('User not found', username);
   } else {
     console.log('Query result', reduser);
+    req.session.userdata = reduser;
     res.json({
       status: true,
-      userdata: {
-        username: reduser.username,
-        name: reduser.name,
-        age: reduser.age,
-        favcolor: reduser.favcolor,
-        propicture: reduser.propicture
-      }
+      userdata: reduser
     });
-    req.user = reduser;
   }
 });
 
