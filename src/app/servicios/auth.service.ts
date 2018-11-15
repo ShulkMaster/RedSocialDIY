@@ -10,35 +10,25 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   myUser: Usuario;
-  itwork = false;
+  logeado = false;
 
   constructor(private http: HttpClient, public router: Router) {
     console.log('auth contructor fired');
-    this.getUser();
-    console.log('this is my user now', this.myUser);
   }
 
-  private  getUser() {
-     this.http.get('/srv/prueba').subscribe(
-      (data: any) => {
-        console.log('gotten from server on getuser', data);
-        if (data) {
-          this.myUser = new Usuario(data);
-          this.itwork = true;
-        }
-      }
-    );
-  }
 
+  getUser() {
+    return this.http.get('/srv/login');
+  }
 
   isUser(info: Object) {
     console.log(info, 'Send to server on login');
-    this.http.post('/srv/prueba', info).subscribe(
+    this.http.post('/srv/login', info).subscribe(
       (data: any) => {
         console.log(data, 'gotten from server on login');
-        this.itwork = data.status;
-        console.log('value before', this.itwork);
-        if (this.itwork) {
+        this.logeado = data.status;
+        console.log('value before', this.logeado);
+        if (this.logeado) {
           this.myUser = new Usuario(data.userdata);
           this.router.navigate(['']);
         }

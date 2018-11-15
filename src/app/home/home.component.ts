@@ -8,6 +8,7 @@ import { Usuario } from '../classes/usuario';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   user: Usuario;
@@ -17,10 +18,17 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.user) {
-      this.user = this.loger.myUser;
-      console.log('this is the user from home', this.user);
+    if (!this.loger.myUser) {
+      this.loger.getUser().subscribe( (data: any) => {
+        console.log('desde API session', data);
+        this.loger.myUser = new Usuario(data.userdata);
+        this.user = this.loger.myUser;
+        this.loger.logeado = data.status;
+        console.log('this is the user from home on remote server call', this.user);
+      });
     }
+    console.log('Usuario session already exist from home');
+    this.user = this.loger.myUser;
   }
 
   dodata() {

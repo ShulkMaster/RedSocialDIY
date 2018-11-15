@@ -35,16 +35,19 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000*60*60*24
+    maxAge: 1000 * 60 * 60 * 24
   }
 }));
 
-app.get('/srv/prueba', async function (req, res) {
+app.get('/srv/login', async function (req, res) {
   console.log('data almacendad en sesion', req.session);
-  res.json(req.session.userdata);
+  res.json({
+    status: true,
+    userdata: req.session.userdata
+  });
 });
 
-app.post('/srv/prueba', async function (req, res) {
+app.post('/srv/login', async function (req, res) {
   const { username, passwd } = req.body;
   const reduser = await usuario.findOne({ username, passwd });
   if (!reduser) {
@@ -60,27 +63,7 @@ app.post('/srv/prueba', async function (req, res) {
   }
 });
 
-app.post('/srv', async (req, res) => {
-  const { username, passwd } = req.body;
-  const reduser = await usuario.findOne({ username, passwd });
-  if (!reduser) {
-    res.json({ status: false, error: 'User not found or wrong password' });
-    console.log('User not found', username);
-  } else {
-    console.log('Query result', reduser);
-    res.json({
-      status: true,
-      userdata: {
-        username: reduser.username,
-        name: reduser.name,
-        age: reduser.age,
-        favcolor: reduser.favcolor,
-        propicture: reduser.propicture
-      }
-    });
-    req.user = reduser;
-  }
-});
+app.post('/srv/');
 
 app.post('/srv/register', async (req, res) => {
   console.log(req.body);

@@ -16,9 +16,9 @@ export class NavegacionComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.loger.itwork) {
-      this.user = this.loger.myUser;
-      console.log(this.user);
+    if (this.loger.logeado) {
+      // this.user = this.loger.getUser();
+      // console.log('usuario desde navegacion', this.user);
     }
   }
 
