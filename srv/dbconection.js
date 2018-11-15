@@ -7,6 +7,7 @@ const mongoC = require('mongoose');
 const logger = require('morgan');
 const MongoStore = require('connect-mongo')(session);
 const usuario = require('./models/user');
+const publicacion = require('./models/publicacion');
 const app = express();
 var server;
 
@@ -39,12 +40,19 @@ app.use(session({
   }
 }));
 
-app.get('/srv/login', async function (req, res) {
+app.get('/srv/login', function (req, res) {
   console.log('data almacendad en sesion', req.session);
-  res.json({
-    status: true,
-    userdata: req.session.userdata
-  });
+  if (req.session.userdata) {
+    res.json({
+      status: true,
+      userdata: req.session.userdata
+    });
+  } else {
+    res.json({
+      status: false,
+      error: 'Session not found'
+    });
+  }
 });
 
 app.post('/srv/login', async function (req, res) {
@@ -62,8 +70,6 @@ app.post('/srv/login', async function (req, res) {
     });
   }
 });
-
-app.post('/srv/');
 
 app.post('/srv/register', async (req, res) => {
   console.log(req.body);
@@ -90,10 +96,21 @@ app.post('/srv/register', async (req, res) => {
   }
 });
 
-app.get('/srv/posts', async (req, res) => {
-  console.log('to post session ', req.session);
-  console.log('to post user:', req.user);
-  res.json({ info: 'usuerdata', data: req.session.userdata });
+app.get('/srv/posts', (req, res) => {
+  console.log('get to /srv/posts whit:  ', req.session);
+  console.log('get to /srv/posts whit:', req.user);
+  publicacion.find({}, { '_id': false }, function (err, docs) {
+    if (err) {
+      console.log('Error', err);
+      res.json({ status: false, error: 'No se pudo optener data' });
+    } else {
+      res.json({ status: true, data: docs });
+    }
+  }).sort(
+    {
+      "views": -1.0
+    }
+  ).limit(10);
 });
 
 

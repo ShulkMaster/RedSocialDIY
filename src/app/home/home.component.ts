@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { AuthService } from '../servicios/auth.service';
 import { Usuario } from '../classes/usuario';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
 
 @Component({
   selector: 'app-home',
@@ -26,9 +27,11 @@ export class HomeComponent implements OnInit {
         this.loger.logeado = data.status;
         console.log('this is the user from home on remote server call', this.user);
       });
-    }
+    } else {
     console.log('Usuario session already exist from home');
     this.user = this.loger.myUser;
+    }
+    this.dataserver.getpostfeed();
   }
 
   dodata() {

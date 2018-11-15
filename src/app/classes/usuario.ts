@@ -4,7 +4,6 @@ export class Usuario {
 
     name: string;
     username: string;
-    titulo: string;
     edad: number;
     favcolor: color;
     picture: string;
