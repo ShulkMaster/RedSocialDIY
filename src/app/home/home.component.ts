@@ -13,25 +13,36 @@ import { PublicacionComponent } from '../publicacion/publicacion.component';
 export class HomeComponent implements OnInit {
 
   user: Usuario;
+  publicaciones: PublicacionComponent[];
 
   constructor(private loger: AuthService, private dataserver: DataService) {
     console.log('Home constructor fired from home');
+    this.publicaciones = new Array();
   }
 
   ngOnInit() {
     if (!this.loger.myUser) {
-      this.loger.getUser().subscribe( (data: any) => {
+      this.loger.getUser().subscribe((data: any) => {
         console.log('desde API session', data);
-        this.loger.myUser = new Usuario(data.userdata);
-        this.user = this.loger.myUser;
-        this.loger.logeado = data.status;
-        console.log('this is the user from home on remote server call', this.user);
+        if (data.status) {
+          this.loger.myUser = new Usuario(data.userdata);
+          this.user = this.loger.myUser;
+          this.loger.logeado = data.status;
+          console.log('this is the user from home on remote server call', this.user);
+        }
       });
     } else {
-    console.log('Usuario session already exist from home');
-    this.user = this.loger.myUser;
+      console.log('Usuario session already exist from home');
+      this.user = this.loger.myUser;
     }
-    this.dataserver.getpostfeed();
+    this.dataserver.getpostfeed().subscribe((info: any) => {
+      if (info.status) {
+        info.data.forEach(element => {
+          console.log('este elemneto es una publicacion', element);
+          this.publicaciones.push(new PublicacionComponent());
+        });
+      }
+    });
   }
 
   dodata() {

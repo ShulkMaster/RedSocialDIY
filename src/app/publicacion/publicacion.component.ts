@@ -16,15 +16,17 @@ export class PublicacionComponent implements OnInit {
   tags: string[];
   views: number;
 
-  constructor(info: any) {
-    console.log('publivavion contructor fired');
-    this.titulo = info.titulo;
-    this.autor = info.autor;
-    this.contenido = info.contenido;
-    this.map = info.map;
-    this.publish = info.publish;
-    this.version = info.version;
-    this.views = info.views;
+  constructor() {
+    console.log('publicacion contructor fired');
+    /*
+    this.titulo = datafeed.titulo;
+        this.autor = datafeed.autor;
+        this.contenido = datafeed.contenido;
+        this.map = datafeed.map;
+        this.publish = datafeed.publish;
+        this.version = datafeed.version;
+        this.views = datafeed.views;
+        */
   }
 
   ngOnInit() {
