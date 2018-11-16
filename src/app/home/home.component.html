@@ -1,12 +1,12 @@
 <div class="contentt">
-    <ul *ngIf="user">
+    <ul *ngIf="this.session.myUser">
       <li>
-        <img [src]="user.picture" alt="user.name">
-        <p>{{ user.name}} tupido {{ user.edad}} </p>
+        <img [src]=" this.session.myUser.picture" alt=" this.session.myUser.name">
+        <p>{{ this.session.myUser.name}} tupido {{ this.session.myUser.edad}} </p>
       </li>
     </ul>
 
-    <div *ngIf="user" class="contenedor" >
+    <div *ngIf="this.session.myUser" class="contenedor" >
         <div class="lateral">
           <ul align="center">
             <li><a href="#">Friend Av</a></li>
@@ -16,15 +16,6 @@
             <li><a href="#">Friend Av</a></li>
           </ul>
         </div>
-      <div class="content">
-        <ul *ngIf="users">
-          <li *ngFor="let user of users.data">
-            <img [src]="user.avatar" alt="user.name">
-            <p>{{ user.first_name}} tupido {{ user.last_name}} </p>
-          </li>
-      
-        </ul>
-      </div>
         <div class="lateral">
             <ul align="center">
               <li><a href="#">Categoria</a></li>

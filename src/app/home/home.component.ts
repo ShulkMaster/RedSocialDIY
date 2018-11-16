@@ -12,26 +12,18 @@ import { PublicacionComponent } from '../publicacion/publicacion.component';
 
 export class HomeComponent implements OnInit {
 
-  user: Usuario;
   publicaciones: PublicacionComponent[];
 
-  constructor(private loger: AuthService, private dataserver: DataService) {
-    console.log('Home constructor fired from home');
+  constructor(private session: AuthService, private dataserver: DataService) {
     this.publicaciones = new Array();
+    console.log('Home constructor fired from home');
   }
 
   ngOnInit() {
-    this.loger.getSession(function(err) {
-      if (err) {
-        console.log('Hubo un error', err);
-      }
-      console.log('WOOO');
-    });
-
     this.dataserver.getpostfeed().subscribe((info: any) => {
       if (info.status) {
         info.data.forEach(element => {
-          console.log('este elemneto es una publicacion', element);
+          // console.log('este elemneto es una publicacion', element);
           // this.publicaciones.push(new PublicacionComponent(element));
         });
       }
@@ -47,8 +39,8 @@ export class HomeComponent implements OnInit {
   }
 
   checkuserage() {
-    if (this.loger.myUser.edad >= 10) {
-      console.log('su usuario si es mayor de eedad', this.loger.myUser);
+    if (this.session.myUser.edad >= 10) {
+      console.log('su usuario si es mayor de eedad', this.session.myUser);
       return true;
     }
     return false;

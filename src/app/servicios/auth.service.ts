@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../classes/usuario';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,27 +15,13 @@ export class AuthService {
 
   constructor(private http: HttpClient, public router: Router) {
     console.log('auth contructor fired');
-  }
-
-  getSession(cb) {
-    if (!this.myUser) {
-        this.getUser().subscribe((data: any) => {
-          console.log('desde API session', data);
-          if (data.status) {
-            this.myUser = data.userdata;
-            this.logeado = data.status;
-            cb();
-          } else {
-            cb({err: 'no se puede ..'} );
-          }
-        });
-    } else {
-      cb();
-    }
-  }
-
-  getUser() {
-    return this.http.get('/srv/login');
+    this.http.get<Usuario>('/srv/login').subscribe((data: any) => {
+      console.log('desde API session', data);
+      if (data.status) {
+        this.myUser = new Usuario(data.userdata);
+        this.logeado = data.status;
+      }
+    });
   }
 
   isUser(info: Object) {

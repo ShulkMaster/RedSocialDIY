@@ -9,7 +9,6 @@ export class Usuario {
     picture: string;
 
     constructor(info: any) {
-        console.log('from user class TS:', info);
         this.name = info.name;
         this.username = info.username;
         this.edad = info.age;
