@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../servicios/auth.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegistroComponent implements OnInit {
   submited = false; // Este booleano se usa para hacer cambiso en el css si se envia y fallan las validadciones
   exito = false; // este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
 
-  constructor(private formmaker: FormBuilder, private userSuscriber: AuthService, private formBuilder: FormBuilder) {
+  constructor(private userSuscriber: AuthService) {
     this.formregis = new FormGroup({});
   }
 
@@ -61,11 +61,11 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar() {
-    console.log('ok registranod...', this.pickdata());
+    console.log('ok registrando...', this.pickdata());
     this.userSuscriber.resgisterUser(this.pickdata());
   }
 
-  pickdata() {
+  private pickdata() {
     const datapackage = {
       email: this.formregis.controls.email.value,
       username: this.formregis.controls.username.value,

@@ -29,7 +29,7 @@
   igual cambiara automaticamente sin trecargar la pagina-->
   <!-- else init_sesion_block declara que plantilla se renderisa si la condicion falla-->
   <div class="Connect container w-25 " *ngIf="this.session.myUser; else init_sesion_block">
-      <img [src]=" this.session.myUser.picture" alt=" this.session.myUser.name" class="rounded-circle w-25">
+      <img [src]="this.session.myUser.picture" alt="{{this.session.myUser.name}}" class="rounded-circle w-25">
     <p>nombre del usuario: {{this.session.myUser.name}}</p>
   </div>
  <!--#init_sesion_block delcara el nombre de la plantilla y dentro su contenido-->
