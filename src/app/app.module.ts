@@ -1,8 +1,13 @@
+// nativo de angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// dependecias de terceros
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+// componentes creados
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavegacionComponent } from './navegacion/navegacion.component';
@@ -33,7 +38,8 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

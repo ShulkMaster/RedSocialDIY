@@ -1,3 +1,5 @@
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+</div>
 <div class="puclicar ">
   <div class="bg-white border border-primary p-3 rounded ">
     <div class="row">
@@ -9,7 +11,7 @@
       </div>
     </div>
     <div class="row ">
-      <div class="col-12 contenidU" *ngFor = "let parrafo of contenido.parrafos">
+      <div class="col-12 contenidU" *ngFor="let parrafo of contenido.parrafos">
         <p>{{parrafo}}</p>
       </div>
     </div>

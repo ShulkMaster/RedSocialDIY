@@ -32,4 +32,8 @@ export class PublicacionComponent implements OnInit {
   ngOnInit() {
   }
 
+  onScroll() {
+    console.log('scrolled!!');
+  }
+
 }
