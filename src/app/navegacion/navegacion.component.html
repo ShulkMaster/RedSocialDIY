@@ -1,7 +1,7 @@
 <header>
   <div class="in-head">
     <div class="Empresa">
-      <img src="assets/img/main_logo.png" alt="Logo RedSocial">
+      <!--<img src="assets/img/main_logo.png" alt="Logo RedSocial">-->
     </div>
     <nav class="list-nav">
       <div class="ops">
@@ -30,7 +30,7 @@
     <p>nombre del usuario: {{this.session.myUser.name}}</p>
   </div>
 
-  <ng-template #init_sesion_block class="Connect">
+  <div #init_sesion_block class="Connect">
     <div>
       <ul>
         <li><a routerLink="/login">Iniciar Sesion</a></li>
@@ -39,7 +39,7 @@
     <div class="registro">
       <span><a routerLink="/registro">Unirme</a></span>
     </div>
-  </ng-template>
+  </div>
 </header>
 
 
