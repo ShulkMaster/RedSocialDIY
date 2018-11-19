@@ -1,12 +1,9 @@
 
 .Empresa {
-    height: 900%;
-    width: 10%;
+    width: 470%;
 }
 
 .Empresa img {
-    max-width: 100%;
-    max-height: 100%;
     vertical-align: bottom;
 }
 
@@ -21,7 +18,7 @@ header {
 
 .in-head {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto 90%;
     color: #ffffff;
     justify-content: center;
     align-items: center;
