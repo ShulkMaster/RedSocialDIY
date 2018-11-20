@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { AuthService } from '../servicios/auth.service';
 import { Passwordcheck } from './passmatch';
 
@@ -15,10 +15,10 @@ export class RegistroComponent implements OnInit {
   submited = false; // Este booleano se usa para hacer cambiso en el css si se envia y fallan las validadciones
   exito = false; // este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
 
-  constructor(private userSuscriber: AuthService) {
-    this.formregis = new FormGroup({
+  constructor(private userSuscriber: AuthService, private maker: FormBuilder) {
+    this.formregis = this.maker.group({
       email: new FormControl(null, {
-        validators: [Validators.email],
+        validators: [Validators.email]
       }),
       username: new FormControl(null, {
         validators: [Validators.required],
@@ -30,8 +30,13 @@ export class RegistroComponent implements OnInit {
           Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
         ]
       }),
-      conpasswd: new FormControl(null)
+      conpasswd: new FormControl(null, {
+        validators: [Passwordcheck]
+      })
     });
+    this.formregis.controls.passwd.valueChanges.subscribe(
+      valor => this.formregis.controls.conpasswd.updateValueAndValidity()
+    );
   }
 
   ngOnInit() {

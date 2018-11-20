@@ -49,19 +49,19 @@
                                     <label class="form-check-label col-7 col-xs-7 col-sm-7 col-md-7" for="exampleCheck1">Aceptar
                                         Terminos
                                         y Condiciones</label>
-                                    <p>invalid username {{this.formregis.controls.username.invalid}}</p>
-                                    <p>invalid email {{this.formregis.controls.email.invalid}}</p>
-                                    <p>invalid password {{this.formregis.controls.passwd.invalid}}</p>
-                                    <p>invalid confirm password {{this.formregis.controls.conpasswd.invalid}}</p>
-                                    <p>invalid checknox {{this.formregis.controls.checkb.invalid}}</p>
-                                    <p>Todo invalido {{this.formregis.valid}}</p>
+                                    <p>Is username valid: {{this.formregis.controls.username.valid}}</p>
+                                    <p>Is email valid: {{this.formregis.controls.email.valid}}</p>
+                                    <p>Is password valid: {{this.formregis.controls.passwd.valid}}</p>
+                                    <p>Is confirm password valid: {{this.formregis.controls.conpasswd.valid}}</p>
+                                    <p>Is checknox valid: {{this.formregis.controls.checkb.valid}}</p>
+                                    <p>Is all valid: {{this.formregis.valid}}</p>
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-primary btn-block mb-2 col-6 col-xs-6 col-sm-6 col-md-6"
                                     id="registro" [disabled]="!this.formregis.valid">
                                     Registrarse
                                 </button>
                                 <div class="form-group col-md-12 mb-2">
-                                    <a routerLink="/user/login" class="form-control userLog">Ya estas registrado?</a>
+                                    <a routerLink="/login" class="form-control userLog">Ya estas registrado?</a>
                                 </div>
                             </form>
                         </div>

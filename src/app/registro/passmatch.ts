@@ -1,11 +1,15 @@
-import { FormControl } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
-export class Passwordcheck {
-  static validUsername(pass1: FormControl, pass2: FormControl) {
-    if ( pass1.value.toLowerCase() === 'abc123' || pass1.value.toLowerCase() === '123abc') {
-      return ({validUsername: true});
-    } else {
-      return (null);
+export function Passwordcheck(control: AbstractControl) {
+  if (control && (control.value !== null || control.value !== undefined)) {
+    const pass1 = control.root.get('passwd');
+    const pass2 = control.value;
+    if (pass1) {
+      const valorpw = pass1.value;
+      if (pass2 !== valorpw) {
+        return {isError: true};
+      }
     }
   }
+  return null;
 }
