@@ -1,7 +1,7 @@
 <div class="contentt">
     <ul *ngIf="this.session.myUser">
       <li>
-        <img [src]=" this.session.myUser.picture" alt=" this.session.myUser.name">
+        <img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name">
         <p>{{ this.session.myUser.name}} tupido {{ this.session.myUser.edad}} </p>
       </li>
     </ul>

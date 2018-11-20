@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../servicios/auth.service';
+import { Passwordcheck } from './passmatch';
 
 @Component({
   selector: 'app-registro',
@@ -15,43 +16,25 @@ export class RegistroComponent implements OnInit {
   exito = false; // este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
 
   constructor(private userSuscriber: AuthService) {
-    this.formregis = new FormGroup({});
+    this.formregis = new FormGroup({
+      email: new FormControl(null, {
+        validators: [Validators.email],
+      }),
+      username: new FormControl(null, {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }),
+      passwd:  new FormControl(null, {
+        validators: [Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
+        ]
+      }),
+      conpasswd: new FormControl(null)
+    });
   }
 
   ngOnInit() {
-    this.formregis.addControl(
-      'email',
-      new FormControl(null, [Validators.required, Validators.email])
-    );
-
-    this.formregis.addControl(
-      'username',
-      new FormControl(null, [Validators.required])
-    );
-
-    this.formregis.addControl(
-      'passwd',
-      new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
-        ]
-      ));
-
-    this.formregis.addControl(
-      'conpasswd',
-      new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'))
-        ]
-      )
-    );
-
     this.formregis.addControl(
       'checkb', new FormControl(
         false,

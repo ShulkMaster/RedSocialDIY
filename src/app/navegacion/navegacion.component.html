@@ -1,7 +1,7 @@
 <header>
   <div class="in-head">
     <div class="Empresa">
-      <img src="assets/img/main_logo.png" alt="Logo RedSocial">
+      <img src="http://files.sovize.com/wp-content/uploads/2018/11/main_logo.png" alt="Logo RedSocial">
     </div>
     <nav class="list-nav">
       <div class="ops">
@@ -26,8 +26,8 @@
   </div>
 
   <div class="Connect container w-25 " *ngIf="this.session.myUser; else init_sesion_block">
-      <img [src]="this.session.myUser.picture" alt="{{this.session.myUser.name}}" class="rounded-circle w-25">
-    <p>nombre del usuario: {{this.session.myUser.name}}</p>
+      <img [src]="this.session.myUser.picture" [alt]= "this.session.myUser.name" class="rounded-circle w-25">
+    <p>nombre del usuario: {{this.session.myUser.name}} </p>
   </div>
 
   <ng-template #init_sesion_block class="Connect">
