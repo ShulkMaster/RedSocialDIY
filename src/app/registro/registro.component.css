@@ -1,9 +1,166 @@
-* {
-    margin: 0%;
-    padding: 0%;
+.wrap {
+    opacity: 1.0;
+    width: 90%;
+    max-width: 900px;
+    min-width: 400px;
+    margin: auto;
+    background: #f2f2f2;
+    box-shadow: 9px 6px 15px #424242;
 }
 
-.form-control.userLog {
-    border: 0px solid !important;
-    margin-top: 1em;
+.contenedor {
+    width: 100%;
+    background-image: linear-gradient(to bottom, #C0C0C0, #707070);
+    padding: 50px;
+}
+
+.contenedor .formula {
+    width: 100%;
+    margin: auto;
+}
+
+.contenedor .formula .card {
+    box-sizing: border-box;
+    border: 8px solid #DDDDDD;
+}
+
+.contenedor .formula .card .primiuntext{
+    background-color: #DDDDDD
+}
+
+.contenedor .formula .capturador {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.contenedor .formula .capturador label {
+    display: block;
+    font-size: 1.2em;
+    margin-left: 20px;
+    color: #303F9F;
+}
+
+.contenedor .formula .capturador input[type="text"]:focus,
+.contenedor .formula .capturador input[type="text"]:active,
+.contenedor .formula .capturador input[type="email"]:focus,
+.contenedor .formula .capturador input[type="email"]:active,
+.contenedor .formula .capturador input[type="password"]:focus,
+.contenedor .formula .capturador input[type="password"]:active,
+.contenedor .formula .capturador input[type="tel"]:focus,
+.contenedor .formula .capturador input[type="tel"]:active {
+    outline: none;
+    border-bottom: 2px solid #303F9F
+}
+
+.contenedor .formula .capturador input[type="text"]::placeholder,
+.contenedor .formula .capturador input[type="email"]::placeholder,
+.contenedor .formula .capturador input[type="password"]::placeholder,
+.contenedor .formula .capturador input[type="tel"]::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
+.contenedor .formula .capturador input[type="text"]:focus::placeholder,
+.contenedor .formula .capturador input[type="email"]:focus::placeholder,
+.contenedor .formula .capturador input[type="password"]:focus::placeholder,
+.contenedor .formula .capturador input[type="tel"]:focus::placeholder {
+    opacity: 0.4;
+    color: blue;
+}
+
+.contenedor .formula .capturador input[type="text"]:focus::-ms-input-placeholder,
+.contenedor .formula .capturador input[type="email"]:focus::-ms-input-placeholder,
+.contenedor .formula .capturador input[type="password"]:focus::-ms-input-placeholder,
+.contenedor .formula .capturador input[type="tel"]:focus::-ms-input-placeholder {
+    /* Microsoft Edge */
+    opacity: 0.4;
+    color: blue;
+}
+
+
+.contenedor .formula .capturador input[type="text"].error,
+.contenedor .formula .capturador input[type="email"].error,
+.contenedor .formula .capturador input[type="password"].error {
+    border-bottom: 2px solid #D32F2F;
+}
+
+.contenedor .formula .capturador input[type="text"].error + label,
+.contenedor .formula .capturador input[type="email"].error + label,
+.contenedor .formula .capturador input[type="password"].error + label {
+    color: #D32F2F;
+}
+
+.contenedor .formula .capturador.error label {
+    color: #D32F2F;
+}
+
+
+.contenedor .formula .capturador.error label:hover {
+    background: rgba(211, 47, 47, 0.2)
+}
+
+.contenedor .formula .capturador.error label:before {
+    border: 2px solid #D32F2F;
+}
+.contenedor .formula .capturador input[type="date"] {
+    color: #95a5a6;
+    appearance: none;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 1.5em;
+    border: 5px solid whitesmoke;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+.contenedor .formula .capturador input[type="date"]:focus {
+    background-color: white;
+    color: #95a5a6;
+}
+.contenedor .formula .capturador select {
+    font-size: 1.3em;
+    background-color: #1f5ccf;
+    color: aliceblue;
+    transition: all 0.3s ease;
+    margin-left: 2em;
+    padding: 15px;
+}
+.contenedor .formula .capturador select:hover {
+    font-size: 1.6em;
+    background-color: #1976D2;
+}
+.contenedor .formula input[type="submit"] {
+    background-color: #303F9F;
+    border-radius: 1.3em;
+    border: 2px solid #f2f2f2;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.6em;
+    padding: 15px;
+    width: 65%;
+    transition: all 0.3s ease;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.contenedor .formula input[type="submit"]:hover {
+    background: #1976D2;
+    width: 75%;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+footer .pie {
+    width: 70%;
+    box-sizing: border-box;
+    padding: 2em;
+}
+
+.colores {
+    width: 35%;
+    height: 3em;
+    margin-left: 2em;
+    outline: none;
 }
