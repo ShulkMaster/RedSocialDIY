@@ -21,4 +21,9 @@ export class NavegacionComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout() {
+    console.log('log out fired');
+    this.session.destroySession();
+  }
+
 }

@@ -2,7 +2,6 @@
 
 const express = require('express');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
 const mongoC = require('mongoose');
 const logger = require('morgan');
 const MongoStore = require('connect-mongo')(session);
@@ -27,7 +26,6 @@ mongoC.connect(URIS, config, function (err, db) {
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
   secret: 'sodsgsdgsdgsgsd',
@@ -40,12 +38,40 @@ app.use(session({
   }
 }));
 
-app.get('/srv/login', function (req, res) {
+app.get('/srv/login', async function (req, res) {
   console.log('data almacendad en sesion', req.session);
-  if (req.session.userdata) {
+  if (req.session.username) {
+    const reduser = await usuario.findOne({username: req.session.username});
+    console.log('esta data se envia desde cookie en DB', reduser);
     res.json({
       status: true,
-      userdata: req.session.userdata
+      userdata: reduser
+    });
+  } else {
+    res.json({
+      status: false,
+      error: 'Session not found'
+    });
+  }
+});
+
+app.delete('/srv/logout', async function (req, res) {
+  console.log('data almacendad en sesion borrar', req.session);
+  if (req.session.username) {
+    req.session.destroy( err => {
+      if (err) {
+        req.session = null;
+        res.json({
+          status: false,
+          error: err
+        });
+      } else {
+        req.session = null;
+        res.json({
+          status: true,
+          error: 'todo bien'
+        });
+      }
     });
   } else {
     res.json({
@@ -63,7 +89,7 @@ app.post('/srv/login', async function (req, res) {
     console.log('User not found', username);
   } else {
     console.log('Query result', reduser);
-    req.session.userdata = reduser;
+    req.session.username = reduser.username;
     res.json({
       status: true,
       userdata: reduser

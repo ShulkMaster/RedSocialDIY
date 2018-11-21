@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../classes/usuario';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +48,15 @@ export class AuthService {
       }
     );
 
+  }
+
+  destroySession() {
+    this.http.delete('/srv/logout').subscribe((data: any) => {
+      if (data.status) {
+        console.log('La sesion se limpio:', data);
+      }
+      this.router.navigate(['/login']);
+    });
   }
 
 }
