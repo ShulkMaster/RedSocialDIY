@@ -1,31 +1,42 @@
 <div class="contentt">
-    <ul *ngIf="this.session.myUser">
-      <li>
-        <img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name">
-        <p>{{ this.session.myUser.name}} tupido {{ this.session.myUser.edad}} </p>
-      </li>
-    </ul>
+  <ul *ngIf="this.session.myUser">
+    <li>
+      <img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name">
+      <p>{{ this.session.myUser.name}} tupido {{ this.session.myUser.edad}} </p>
+    </li>
+  </ul>
 
-    <div *ngIf="this.session.myUser" class="contenedor" >
-        <div class="lateral">
-          <ul align="center">
-            <li><a href="#">Friend Av</a></li>
-            <li><a href="#">Friend Av</a></li>
-            <li><a href="#">Friend Av</a></li>
-            <li><a href="#">Friend Av</a></li>
-            <li><a href="#">Friend Av</a></li>
-          </ul>
-        </div>
-        <div class="lateral">
-            <ul align="center">
-              <li><a href="#">Categoria</a></li>
-              <li><a href="#">Categoria</a></li>
-              <li><a href="#">Categoria</a></li>
-              <li><a href="#">Categoria</a></li>
-              <li><a href="#">Categoria</a></li>
-              </ul>
-        </div>
-      </div>
-      <input type="button" value="log user" (click)='dodata()'>
-      <input type="button" value="edad de suarior" (click)='checkuserage()'>
+  <div *ngIf="this.session.myUser" class="contenedor">
+    <div class="lateral">
+      <ul align="center">
+        <li><a href="#">Friend Av</a></li>
+        <li><a href="#">Friend Av</a></li>
+        <li><a href="#">Friend Av</a></li>
+        <li><a href="#">Friend Av</a></li>
+        <li><a href="#">Friend Av</a></li>
+      </ul>
+    </div>
+    <div class="lateral">
+      <ul align="center">
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+        <li><a href="#">Categoria</a></li>
+      </ul>
+    </div>
+  </div>
+  <input type="button" value="edad de suarior" (click)='checkuserage()'>
+  <p>antes</p>
+  <div class="vscrollerx">
+    <h1 class="center">Virtual Scroll using Angular 7</h1>
+    <ul class="list">
+      <cdk-virtual-scroll-viewport style="height: 500px" [itemSize]="50">
+        <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async">
+          <li> {{p.titulo}} y {{p.autorid}}</li>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+    </ul>
+  </div>
+  <p>despues</p>
 </div>

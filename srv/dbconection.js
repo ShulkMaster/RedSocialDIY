@@ -136,7 +136,7 @@ app.get('/srv/posts', (req, res) => {
     {
       "views": -1.0
     }
-  ).limit(10);
+  ).limit(20);
 });
 
 

@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 // dependecias de terceros
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 // componentes creados
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +39,7 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    InfiniteScrollModule
+    ScrollingModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
