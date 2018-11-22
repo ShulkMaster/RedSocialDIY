@@ -34,3 +34,38 @@
 .content{
     padding: 2em;
 }
+
+.vscrollerx {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+cdk-virtual-scroll-viewport {
+    height: 800px;
+}
+
+cdk-virtual-scroll-viewport .public {
+    height: 120px;
+    background-color: #fafafa;
+    padding: 1em;
+    margin: 0.5em;
+    display: flex;
+    overflow: hidden;
+}
+
+cdk-virtual-scroll-viewport .public .contenu {
+    width: 70%;
+}
+cdk-virtual-scroll-viewport .public .contenu p {
+    height: 20px;
+}
+
+cdk-virtual-scroll-viewport .public .autorinfo {
+    width: 30%;
+}
+
+cdk-virtual-scroll-viewport .public .autorinfo img{
+    object-fit: cover;
+    height: 80px;
+}

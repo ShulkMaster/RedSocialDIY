@@ -29,11 +29,24 @@
   <input type="button" value="edad de suarior" (click)='checkuserage()'>
   <p>antes</p>
   <div class="vscrollerx">
-    <h1 class="center">Virtual Scroll using Angular 7</h1>
-    <ul class="list">
-      <cdk-virtual-scroll-viewport style="height: 500px" [itemSize]="50">
+    <h1>Publicaciones</h1>
+    <h2>Virtual Scroll using Angular 7</h2>
+    <ul>
+      <cdk-virtual-scroll-viewport [itemSize]="120">
         <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async">
-          <li> {{p.titulo}} y {{p.autorid}}</li>
+          <li class="public">
+            <div class="contenu">
+              <p class="titulu">{{p.titulo}}</p>
+              <div class="sumary">
+                <p>{{p.resumen}}</p>
+              </div>
+            </div>
+            <div class="autorinfo" [style.background-color]="'gray'">
+              <img [src]="p.autor.propicture" [alt]="p.autor.username" class="rounded-circle">
+              <p>{{p.autor.username}}</p>
+            </div>
+
+          </li>
         </ng-container>
       </cdk-virtual-scroll-viewport>
     </ul>

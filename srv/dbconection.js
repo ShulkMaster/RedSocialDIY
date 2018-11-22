@@ -134,21 +134,21 @@ app.get('/srv/posts', (req, res) => {
         "as": "autor"
       }},
     {"$unwind": {"path": "$autor","preserveNullAndEmptyArrays": false}},
-    {"$limit": 50.0},
+    {"$limit": 100.0},
     {"$project": {
         "_id": "$_id",
-        "autorid.id": "$autorid",
-        "autorid.username": "$autor.username",
-        "autorid.favcolor": "$autor.favcolor",
-        "autorid.propicture": "$autor.propicture",
+        "autor.id": "$autorid",
+        "autor.username": "$autor.username",
+        "autor.propicture": "$autor.propicture",
         "titulo": "$publicacion.titulo",
+        "resumen": { "$arrayElemAt": [ "$publicacion.contenido.parrafos", 0 ] },
         "views": "$publicacion.views",
         "tags": "$publicacion.tags"
       }},
     {"$sort": {"views": -1.0}}]).option({ "allowDiskUse": true }).exec(function (err, docs) {
       if (err) {
         console.log('Error', err);
-        res.json({ status: false, error: 'No se pudo optener data' });
+        res.json({ status: false, error: err });
       } else {
         res.json({ status: true, data: docs });
       }

@@ -16,10 +16,11 @@ export class DataService {
 
   getpostfeed() {
     this.http.get('/srv/posts').subscribe((respow: any) => {
-      respow.data.forEach(e => {
+      if (!respow.status) {
+        this.publicaciones.next(respow.error);
+      } else {
         this.publicaciones.next(respow.data);
-        console.log(e);
-      });
+      }
     });
   }
 
