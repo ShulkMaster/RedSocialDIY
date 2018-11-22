@@ -12,8 +12,6 @@ import { Passwordcheck } from './passmatch';
 export class RegistroComponent implements OnInit {
 
   formregis: FormGroup;
-  submited = false; // Este booleano se usa para hacer cambiso en el css si se envia y fallan las validadciones
-  exito = false; // este booleano de aqui es el que controla si la app pasa a la siguiente ruta o no
 
   constructor(private userSuscriber: AuthService, private maker: FormBuilder) {
     this.formregis = this.maker.group({
@@ -21,7 +19,8 @@ export class RegistroComponent implements OnInit {
         validators: [Validators.email]
       }),
       username: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [Validators.required,
+          Validators.minLength(6)],
         updateOn: 'blur'
       }),
       passwd:  new FormControl(null, {
@@ -32,7 +31,11 @@ export class RegistroComponent implements OnInit {
       }),
       conpasswd: new FormControl(null, {
         validators: [Passwordcheck]
-      })
+      }),
+      checkb: new FormControl(
+        false,
+        [Validators.requiredTrue]
+      )
     });
     this.formregis.controls.passwd.valueChanges.subscribe(
       valor => this.formregis.controls.conpasswd.updateValueAndValidity()
@@ -40,12 +43,6 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formregis.addControl(
-      'checkb', new FormControl(
-        false,
-        [Validators.requiredTrue]
-      )
-    );
   }
 
   registrar() {

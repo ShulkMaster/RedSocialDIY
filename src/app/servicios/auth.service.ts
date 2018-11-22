@@ -51,10 +51,13 @@ export class AuthService {
   }
 
   destroySession() {
+    console.log('Send to server on log out');
     this.http.delete('/srv/logout').subscribe((data: any) => {
       if (data.status) {
         console.log('La sesion se limpio:', data);
       }
+      this.myUser = null;
+      this.logeado = false;
       this.router.navigate(['/login']);
     });
   }
