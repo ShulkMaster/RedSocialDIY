@@ -41,7 +41,7 @@ app.use(session({
 app.get('/srv/login', async function (req, res) {
   console.log('data almacendad en sesion', req.session);
   if (req.session.username) {
-    const reduser = await usuario.findOne({username: req.session.username});
+    const reduser = await usuario.findOne({ username: req.session.username });
     console.log('esta data se envia desde cookie en DB', reduser);
     res.json({
       status: true,
@@ -58,7 +58,7 @@ app.get('/srv/login', async function (req, res) {
 app.delete('/srv/logout', async function (req, res) {
   console.log('data almacendad en sesion borrar', req.session);
   if (req.session.username) {
-    req.session.destroy( err => {
+    req.session.destroy(err => {
       if (err) {
         req.session = null;
         res.json({
@@ -123,20 +123,36 @@ app.post('/srv/register', async (req, res) => {
 });
 
 app.get('/srv/posts', (req, res) => {
-  console.log('get to /srv/posts whit:  ', req.session);
   console.log('get to /srv/posts whit:', req.user);
-  publicacion.find({}, { '_id': false }, function (err, docs) {
-    if (err) {
-      console.log('Error', err);
-      res.json({ status: false, error: 'No se pudo optener data' });
-    } else {
-      res.json({ status: true, data: docs });
-    }
-  }).sort(
-    {
-      "views": -1.0
-    }
-  ).limit(20);
+  publicacion.aggregate([
+    {"$match": {"publish": true }},
+    {"$project": {"autorid": {"$toObjectId": "$autorid"},"publicacion": "$$ROOT"}},
+    {"$lookup": {
+        "localField": "autorid",
+        "from": "usuarios",
+        "foreignField": "_id",
+        "as": "autor"
+      }},
+    {"$unwind": {"path": "$autor","preserveNullAndEmptyArrays": false}},
+    {"$limit": 50.0},
+    {"$project": {
+        "_id": "$_id",
+        "autorid.id": "$autorid",
+        "autorid.username": "$autor.username",
+        "autorid.favcolor": "$autor.favcolor",
+        "autorid.propicture": "$autor.propicture",
+        "titulo": "$publicacion.titulo",
+        "views": "$publicacion.views",
+        "tags": "$publicacion.tags"
+      }},
+    {"$sort": {"views": -1.0}}]).option({ "allowDiskUse": true }).exec(function (err, docs) {
+      if (err) {
+        console.log('Error', err);
+        res.json({ status: false, error: 'No se pudo optener data' });
+      } else {
+        res.json({ status: true, data: docs });
+      }
+    });
 });
 
 
