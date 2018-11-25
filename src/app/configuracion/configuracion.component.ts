@@ -8,7 +8,7 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class ConfiguracionComponent implements OnInit {
 
-  constructor(private session: AuthService) { }
+  constructor(public session: AuthService) { }
 
   ngOnInit() {
   }

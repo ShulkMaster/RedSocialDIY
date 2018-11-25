@@ -14,10 +14,8 @@ export class HomeComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport) renderize: CdkVirtualScrollViewport;
 
   running = false;
-  session: AuthService;
-  dataserver: DataService;
 
-  constructor(session: AuthService, dataserver: DataService) {
+  constructor(public session: AuthService, public dataserver: DataService) {
     console.log('Home constructor fired from home');
     this.session = session;
     this.dataserver = dataserver;

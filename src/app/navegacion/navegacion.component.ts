@@ -9,7 +9,7 @@ import { AuthService } from '../servicios/auth.service';
 
 export class NavegacionComponent implements OnInit {
 
-  constructor(private session: AuthService) {
+  constructor(public session: AuthService) {
     console.log('Navegacion constructor fired');
     /* session es un servicio de tipo AuthService, dentro de el esta
     una variable llamada myuser que es el usurio que sta loguedo, retorna
