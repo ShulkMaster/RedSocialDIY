@@ -7,6 +7,7 @@ const logger = require('morgan');
 const MongoStore = require('connect-mongo')(session);
 const usuario = require('./models/user');
 const publicacion = require('./models/publicacion');
+const path = require('path');
 const app = express();
 var server;
 
@@ -37,6 +38,7 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24
   }
 }));
+app.use(express.static(path.join(__dirname, '../dist/RedSocialDIY/')));
 
 app.get('/srv/login', async function (req, res) {
   console.log('data almacendad en sesion', req.session);
