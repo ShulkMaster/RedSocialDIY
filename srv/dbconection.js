@@ -122,30 +122,38 @@ app.post('/srv/register', async (req, res) => {
   }
 });
 
-app.get('/srv/posts', (req, res) => {
-  console.log('get to /srv/posts whit:', req.user);
-  publicacion.aggregate([
-    {"$match": {"publish": true }},
-    {"$project": {"autorid": {"$toObjectId": "$autorid"},"publicacion": "$$ROOT"}},
+app.post('/srv/posts', (req, res) => {
+  console.log('post to /srv/posts whit user:', req.user);
+  console.log('post to /srv/posts whit lastindex:', req.body.lastOne);
+  const oldIndex = parseInt(req.body.lastOne,10);
+  console.log('El ultimo index es: ', oldIndex);
+    publicacion.aggregate([
+    {"$match": {"publish": true}},
+    {"$project": {"autorid":{"$toObjectId":"$autorid"},"publicacion": "$$ROOT"}},
     {"$lookup": {
         "localField": "autorid",
         "from": "usuarios",
         "foreignField": "_id",
         "as": "autor"
-      }},
-    {"$unwind": {"path": "$autor","preserveNullAndEmptyArrays": false}},
-    {"$limit": 100.0},
+    }},
+    {"$unwind":{"path": "$autor","preserveNullAndEmptyArrays": false}},
     {"$project": {
         "_id": "$_id",
         "autor.id": "$autorid",
         "autor.username": "$autor.username",
         "autor.propicture": "$autor.propicture",
         "titulo": "$publicacion.titulo",
-        "resumen": { "$arrayElemAt": [ "$publicacion.contenido.parrafos", 0 ] },
+        "resumen": {
+          "$arrayElemAt": [
+            "$publicacion.contenido.parrafos",
+            0.0
+          ]
+        },
         "views": "$publicacion.views",
-        "tags": "$publicacion.tags"
-      }},
-    {"$sort": {"views": -1.0}}]).option({ "allowDiskUse": true }).exec(function (err, docs) {
+        "tags": "$publicacion.tags"}},
+        {"$sort":{"views": -1.0}},
+    {"$skip": oldIndex},
+    {"$limit": 10.0}]).option({ "allowDiskUse": true }).exec(function (err, docs) {
       if (err) {
         console.log('Error', err);
         res.json({ status: false, error: err });

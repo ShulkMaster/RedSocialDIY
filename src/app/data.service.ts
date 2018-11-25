@@ -9,17 +9,23 @@ export class DataService {
 
   publicaciones = new BehaviorSubject<any[]>([]);
 
+  theEnd = false;
+
   constructor(private http: HttpClient) {
     console.log('data service contructor fired');
-    this.getpostfeed();
   }
 
-  getpostfeed() {
-    this.http.get('/srv/posts').subscribe((respow: any) => {
+  getpostfeed(cindex: Number) {
+    this.http.post('/srv/posts', {lastOne : cindex}).subscribe((respow: any) => {
       if (!respow.status) {
-        this.publicaciones.next(respow.error);
+        this.publicaciones.next(this.publicaciones.getValue().concat(respow.error));
+        this.theEnd = true;
+      }
+      console.log('data', respow.data);
+      if (respow.data.length === 0) {
+        this.theEnd = true;
       } else {
-        this.publicaciones.next(respow.data);
+        this.publicaciones.next(this.publicaciones.getValue().concat(respow.data));
       }
     });
   }

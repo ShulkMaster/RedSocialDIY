@@ -27,16 +27,17 @@
     </div>
   </div>
   <input type="button" value="edad de suarior" (click)='checkuserage()'>
+  <input type="button" value="add data" (click)='this.dataserver.getpostfeed(79)'>
   <p>antes</p>
   <div class="vscrollerx">
     <h1>Publicaciones</h1>
     <h2>Virtual Scroll using Angular 7</h2>
     <ul>
-      <cdk-virtual-scroll-viewport [itemSize]="120">
-        <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async">
+      <cdk-virtual-scroll-viewport [itemSize]="120" (scrolledIndexChange)="getNextPack()">
+        <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async; let indice = index;">
           <li class="public">
             <div class="contenu">
-              <p class="titulu">{{p.titulo}}</p>
+              <p class="titulu">{{indice}}) {{p.titulo}} Views:{{p.views}}</p>
               <div class="sumary">
                 <p>{{p.resumen}}</p>
               </div>
@@ -45,7 +46,6 @@
               <img [src]="p.autor.propicture" [alt]="p.autor.username" class="rounded-circle">
               <p>{{p.autor.username}}</p>
             </div>
-
           </li>
         </ng-container>
       </cdk-virtual-scroll-viewport>
