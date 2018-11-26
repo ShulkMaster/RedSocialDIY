@@ -4,6 +4,7 @@
   <div class="bg-white border border-primary p-3 rounded ">
     <div class="row">
       <div class="col-3 avataru pt-3 pb-5" align="center">
+        <p>Titulo {{cPostUrl}}</p>
         <img src="../../assets/img/profileTest/perfil.jpg" width="45%" alt="Nombre usuario" class="rounded-circle picture">
       </div>
       <div class="col-9 pt-5">
@@ -11,8 +12,8 @@
       </div>
     </div>
     <div class="row ">
-      <div class="col-12 contenidU" *ngFor="let parrafo of contenido.parrafos">
-        <p>{{parrafo}}</p>
+      <div class="col-12 contenidU">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dicta dolorem, aliquid facilis quidem obcaecati earum tenetur mollitia nemo nihil. Asperiores amet nostrum maiores quaerat reiciendis aliquam alias voluptas praesentium?</p>
       </div>
     </div>
   </div>
@@ -25,7 +26,7 @@
           <img src="../../assets/img/profileTest/o_perfil.png" width="45%" alt="Nombre usuario" class="rounded-circle picture">
         </div>
         <div class="col-9">
-          Nombre usuario
+          Nombre usuario {{autor}}
         </div>
         <div class="row">
           <div class="col-3">

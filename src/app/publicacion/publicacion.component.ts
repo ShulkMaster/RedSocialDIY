@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-publicacion',
@@ -15,8 +16,9 @@ export class PublicacionComponent implements OnInit {
   version: number;
   tags: string[];
   views: number;
+  cPostUrl: String;
 
-  constructor() {
+  constructor(private ruter: ActivatedRoute) {
     console.log('publicacion contructor fired');
     /*
     this.titulo = datafeed.titulo;
@@ -30,6 +32,10 @@ export class PublicacionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ruter.paramMap.subscribe( param => {
+      this.cPostUrl = param.get('postname');
+      this.autor = param.get('user');
+    });
   }
 
   onScroll() {

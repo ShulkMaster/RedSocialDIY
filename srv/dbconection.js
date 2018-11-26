@@ -131,7 +131,6 @@ app.post('/srv/posts', (req, res) => {
   console.log('El ultimo index es: ', oldIndex);
     publicacion.aggregate([
     {"$match": {"publish": true}},
-    {"$project": {"autorid":{"$toObjectId":"$autorid"},"publicacion": "$$ROOT"}},
     {"$lookup": {
         "localField": "autorid",
         "from": "usuarios",
@@ -141,18 +140,13 @@ app.post('/srv/posts', (req, res) => {
     {"$unwind":{"path": "$autor","preserveNullAndEmptyArrays": false}},
     {"$project": {
         "_id": "$_id",
+        "titulo": "$titulo",
         "autor.id": "$autorid",
         "autor.username": "$autor.username",
         "autor.propicture": "$autor.propicture",
-        "titulo": "$publicacion.titulo",
-        "resumen": {
-          "$arrayElemAt": [
-            "$publicacion.contenido.parrafos",
-            0.0
-          ]
-        },
-        "views": "$publicacion.views",
-        "tags": "$publicacion.tags"}},
+        "resumen": "$resumen",
+        "views": "$views",
+        "tags": "$tags"}},
         {"$sort":{"views": -1.0}},
     {"$skip": oldIndex},
     {"$limit": 10.0}]).option({ "allowDiskUse": true }).exec(function (err, docs) {

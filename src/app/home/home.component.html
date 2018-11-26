@@ -37,7 +37,7 @@
         <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async; let indice = index;">
           <li class="public">
             <div class="contenu">
-              <p class="titulu">{{indice}}) {{p.titulo}} Views:{{p.views}}</p>
+              <a class="titulu" routerLink="/post/{{p.autor.username}}/{{p.titulo}}">{{indice}}) {{p.titulo}} Views:{{p.views}}</a>
               <div class="sumary">
                 <p>{{p.resumen}}</p>
               </div>

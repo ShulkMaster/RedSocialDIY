@@ -7,7 +7,7 @@ import { GaleryComponent } from './galery/galery.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { PublicacionComponent } from './publicacion/publicacion.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
   { path: 'configuracion', component: ConfiguracionComponent},
+  { path: 'post/:user/:postname', component: PublicacionComponent}
 ];
 
 @NgModule({
