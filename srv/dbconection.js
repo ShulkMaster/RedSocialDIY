@@ -17,7 +17,7 @@ const config = {
 
 mongoC.Promise = global.Promise;
 
-const URIS = 'mongodb://sovizeapp:O%2389tiOUsrG%24%2FWS65EG6GGwsE@142.93.252.111:35059/red';
+const URIS = process.env.Mongo;
 console.log(URIS);
 mongoC.connect(URIS, config, function (err, db) {
   if (err) throw err;
