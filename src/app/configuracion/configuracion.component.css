@@ -7,3 +7,9 @@
     width: 100px;
     height: 100px;
 }
+.fondo1{
+    background-color: #ec6635;
+}
+.fondo1:hover{
+    background-color: #0375d8;
+}
