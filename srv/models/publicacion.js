@@ -9,6 +9,7 @@ const contedidoModel = new mongoC.Schema({
 const publicacionModel = new mongoC.Schema({
     titulo: {type: String, required:true},
     autorid:  {type: String, required:true},
+    resumen: {type: String},
     contenido: contedidoModel,
     map: {type: Array, required:true},
     publish:  {type: Boolean, default: false},

@@ -30,5 +30,9 @@ export class DataService {
     });
   }
 
+  getpost(titulo: string) {
+    return this.http.get('/srv/posts/' + titulo);
+  }
+
 }
 

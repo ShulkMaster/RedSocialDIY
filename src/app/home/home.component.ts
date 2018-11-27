@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   checkuserage() {
     if (this.session.myUser.edad >= 10) {
-      console.log('su usuario si es mayor de eedad', this.session.myUser);
+      console.log('su usuario si es mayor de edad', this.session.myUser);
       return true;
     }
     return false;

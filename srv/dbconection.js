@@ -159,6 +159,41 @@ app.get('/srv/posts/:index', (req, res) => {
     });
 });
 
+app.get('/srv/posts/:user/:name', async (req, res) => {
+  const username = req.params.user;
+  const postname = req.params.name;
+  console.log('Buscando publicacion de: ', username, ', nombre del posates: ', postname);
+  const data = await usuario.aggregate([
+    {"$match": {"username": username}},
+    {"$lookup": {
+        "localField": "_id",
+        "from": "publicaciones",
+        "foreignField": "autorid",
+        "as": "tutorial"
+    }},
+    {"$unwind":{"path": "$tutorial","preserveNullAndEmptyArrays": false}},
+    {"$match": {"tutorial.titulo": postname}},
+    {"$project": {
+      "_id": "$_id",
+      "username": "$username",
+      "favcolor": "$favcolor",
+      "propicture": "$propicture",
+      "publicacion": "$tutorial"
+    }}
+  ]).exec( function (err, docs) {
+      if (err) {
+        console.log('Error', err);
+        res.json({ status: false, error: err });
+      } else {
+        if (docs.length === 0) {
+          res.json({ status: false, data: docs, error: "Usuario sin publicaciones o no existe"});
+        }
+        else{
+        res.json({ status: true, data: docs[0] });
+        }
+      }
+    });
+});
 
 server = app.listen(3551, () => console.log('Server runing'));
 
