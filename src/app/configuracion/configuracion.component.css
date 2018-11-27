@@ -13,3 +13,9 @@
 .fondo1:hover{
     background-color: #0375d8;
 }
+.centrar{
+    text-align: center;
+}
+.row>label:hover{
+    color: #0375d8;
+}

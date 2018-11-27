@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-configuracion',
