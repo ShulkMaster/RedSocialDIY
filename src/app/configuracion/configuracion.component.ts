@@ -14,4 +14,11 @@ export class ConfiguracionComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickConfigGeneral(){
+    console.log("estoy en configuracion general");
+  }
+  clickConfigPrivado(){
+    console.log("estoy en la configuracion de la privacidad");
+  }
+
 }
