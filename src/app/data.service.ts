@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/index';
+import { BehaviorSubject, Observable } from 'rxjs/index';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class DataService {
   }
 
   getpostfeed(cindex: Number) {
-    this.http.post('/srv/posts', {lastOne : cindex}).subscribe((respow: any) => {
+    this.http.get('/srv/posts/' + cindex).subscribe((respow: any) => {
       if (!respow.status) {
         this.publicaciones.next(this.publicaciones.getValue().concat(respow.error));
         this.theEnd = true;
