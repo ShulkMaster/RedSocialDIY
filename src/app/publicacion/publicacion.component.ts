@@ -8,15 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PublicacionComponent implements OnInit {
 
-  titulo: string;
-  autor: string;
-  contenido: any;
-  map: string[];
-  publish: boolean;
-  version: number;
-  tags: string[];
-  views: number;
   cPostUrl: String;
+  autor: string;
 
   constructor(private ruter: ActivatedRoute) {
     console.log('publicacion contructor fired');

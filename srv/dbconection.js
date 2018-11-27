@@ -124,10 +124,10 @@ app.post('/srv/register', async (req, res) => {
   }
 });
 
-app.post('/srv/posts', (req, res) => {
+app.get('/srv/posts/:index', (req, res) => {
   console.log('post to /srv/posts whit user:', req.user);
   console.log('post to /srv/posts whit lastindex:', req.body.lastOne);
-  const oldIndex = parseInt(req.body.lastOne,10);
+  const oldIndex = parseInt(req.params.index,10);
   console.log('El ultimo index es: ', oldIndex);
     publicacion.aggregate([
     {"$match": {"publish": true}},
