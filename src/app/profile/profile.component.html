@@ -1,37 +1,32 @@
 <div class="container">
-  <div class="d-flex">
-    <div class="m-5 rounded m-5">
-      <div class="col-sm-12-12 col-md-12-12 col-lg-12-12 col-xl-12-12 p-1 bg-white friends card">
-        <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
-        <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
-        <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
-        <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
+  <div *ngIf="this.session.myUser">
+    <div class="d-flex">
+      <div class="m-5 rounded m-5">
+        <div class="col-sm-12-12 col-md-12-12 col-lg-12-12 col-xl-12-12 p-1 bg-white friends card">
+          <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
+          <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
+          <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
+          <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
+        </div>
       </div>
-    </div>
-    <div class="container m-5 ">
-      <div class="col row border border-primary p-3 rounded bg-white">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-          <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 pb-3 pt-3">
-              <img src="../../assets/img/profileTest/perfil.jpg" alt="..profile" class="rounded-circle picture">
-            </div>
-            <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 info">
-              <div class="userName pb-3 pt-3">User Name</div>
-              <div class="description pb-3 pt-3">Description</div>
+      <div class="container m-5 ">
+        <div class="col row border border-primary p-3 rounded bg-white">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+            <div class="row">
+              <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 pb-3 pt-3">
+                <img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picture">
+              </div>
+              <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 info">
+                <div class="userName pb-3 pt-3">Usurio: {{ this.session.myUser.name}}</div>
+                <div class="Edad pb-3 pt-3">Edad: {{ this.session.myUser.edad}}</div>
+                <div class="description pb-3 pt-3">Description: </div>
+              </div>
+              <input type="button" value="edad de suarior" (click)='checkuserage()'>
+              <input type="button" value="add data" (click)='this.dataserver.getpostfeed(79)'>
+        
             </div>
           </div>
         </div>
-
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12  category pb-3 pt-3">Category Slide</div>
-
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pb-3 pt-3">
-          <div class="topic">Topic Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia mollitia earum
-            dicta
-            natus assumenda, itaque, similique hic veniam ullam a quaerat reprehenderit! Dolor dolorum odit suscipit.
-          </div>
-          <div class=" commentary">Commentary similique hic veniam ullam a quaerat reprehenderit!</div>
-        </div>
-
       </div>
     </div>
   </div>

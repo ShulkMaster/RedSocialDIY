@@ -17,7 +17,7 @@
                     <label for="userMail" class="col-4">Correo Electronico</label>
                     <input type="email" id="userMail" name="userMail"
                         [class.error]="(this.formregis.controls.email.invalid)"
-                        placeholder="Email" formControlName="email" class="email" title="Ingrese correo valido">
+                        placeholder="Correo Electronico" formControlName="email" class="email" title="Ingrese correo valido-formato: correo@correo.com">
                 </div>
             </fieldset>
 
@@ -26,14 +26,14 @@
                     <label for="upassword" class="col-4">Contraseña</label>
                     <input type="password" id="upassword" name="upassword"
                         [class.error]="(this.formregis.controls.passwd.invalid && this.formregis.controls.passwd.dirty)"
-                        placeholder="Contraseña" formControlName="passwd" class="password">
+                        placeholder="Contraseña" formControlName="passwd" class="password"  title="Debe contener Mayusculas, minusculas, numeros y simbolos">
                 </div>
 
                 <div class="capturador">
                     <label for="cupassword" class="col-4">Confirmar contraseña</label>
                     <input type="password"  id="cupassword" name="cupassword"
                     [class.error]="(this.formregis.controls.conpasswd.invalid)"
-                        placeholder="Contraseña" formControlName="conpasswd" class="password">
+                        placeholder="Contraseña" formControlName="conpasswd" class="password" >
                 </div>
             </fieldset>
 

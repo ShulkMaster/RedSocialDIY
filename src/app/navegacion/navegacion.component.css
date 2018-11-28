@@ -1,4 +1,3 @@
-
 .Empresa {
     width: 470%;
 }
@@ -133,4 +132,54 @@ header {
 p i {
     position: relative;
     left: -15px;
+}
+
+.UserInter {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    color: #e7e7e7;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    padding: 0em 0em;
+    justify-content: center;
+    align-items: center;
+}
+
+.UserInter ul {
+    margin: 0%;
+    padding: 0%;
+}
+.UserInter ul li {
+    display: inline;
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+.UserInter div {
+    padding: 1em 1em;
+}
+
+.UserInter a {
+    text-decoration: none;
+}
+
+.UserInter ul li a {
+    color: #e7e7e7;
+}
+
+.UserInter a span  {
+    color: #2a2a2a;
+}
+
+.UserInter div {
+    padding: 3em, 0em;
+}
+
+.personu a span {
+    color: #e7e7e7;
+}
+
+.personuout a span {
+    color: #f5f500;
 }
