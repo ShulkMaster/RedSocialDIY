@@ -12,9 +12,9 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-3">
-          <a routerLink="configuracion" (click)="clickConfigGeneral()" id="btnGe" class="fondo1 text-body btn btn-primary btn-block">General</a>
+          <a routerLink="configuracion" (click)="clickConfigGeneral()" class="fondo1 text-body btn btn-primary btn-block">General</a>
           <br>
-          <a routerLink="configuracion" (click)="clickConfigPrivado()" id="btnPriv" class="fondo1 text-body btn btn-primary btn-block">Privacidad</a>
+          <a routerLink="configuracion" (click)="clickConfigPrivado()" class="fondo1 text-body btn btn-primary btn-block">Privacidad</a>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
                 <!--Opciones de la configuracion general-->
                 <!--Cambiar el nombre del usuario-->
                 <div class="row justify-content-center">
-                    <label for="chagename" id="newName">Cambiar nombre</label>
+                    <label for="chagename" id="newName" (click)="opCampoGe(1)">Cambiar nombre</label>
                 </div>
                 <div class="row justify-content-center d-none" id="campoNewName">
                     <input type="text" name="chagename" placeholder="Nuevo nombre">
@@ -33,7 +33,7 @@
                 </div>                        
                 <!--Cambiar la contraseña-->
                 <div class="row justify-content-center">
-                    <label for="changepassword" id="newPass">Cambiar contraseña</label>
+                    <label for="changepassword" id="newPass" (click)="opCampoGe(2)">Cambiar contraseña</label>
                 </div>
                 <div class="row justify-content-center d-none" id="campoNewPass">
                     <input type="password" placeholder="Contraseña">
@@ -42,7 +42,7 @@
                 </div>
                 <!--Cambiar tema-->
                 <div class="row justify-content-center">
-                    <label for="changetema" id="newTema">Cambiar tema</label>
+                    <label for="changetema" id="newTema" (click)="opCampoGe(3)">Cambiar tema</label>
                 </div>
                 <div class="row justify-content-center d-none" id="campoNewTema">
                     Tema 1 <input type="radio" name="changetema" id="tema1">
