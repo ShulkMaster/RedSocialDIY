@@ -12,3 +12,8 @@
 .titulo {
     width: 100%;
 }
+
+.onedit{
+    text-decoration: underline;
+    color: #acfd80;
+}

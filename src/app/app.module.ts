@@ -20,6 +20,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { AuthService } from './servicios/auth.service';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { PublicacionComponent } from './publicacion/publicacion.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
     ProfileComponent,
     RegistroComponent,
     ConfiguracionComponent,
-    PublicacionComponent
+    PublicacionComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

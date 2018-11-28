@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PublicacionComponent } from './publicacion/publicacion.component';
+import { EditorComponent } from './editor/editor.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
   { path: 'configuracion', component: ConfiguracionComponent},
+  { path: 'post/edit/:user/:postname', component: EditorComponent},
   { path: 'post/:user/:postname', component: PublicacionComponent}
 ];
 
