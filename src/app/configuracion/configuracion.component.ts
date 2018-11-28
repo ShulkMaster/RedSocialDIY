@@ -31,16 +31,16 @@ export class ConfiguracionComponent implements OnInit {
       itemPriv.classList.add("d-block");
   }
   opCampoGe(opc){
-    
+    //this.opCampoPriv("0");    
     let itemNewName = document.getElementById('campoNewName'),
         itemNewPass = document.getElementById('campoNewPass'),
         itemNewTema = document.getElementById('campoNewTema');
     switch(opc){
-      case 0:
+/*       case 0:
         itemNewName.classList.remove("d-block");
         itemNewPass.classList.remove("d-block");
         itemNewTema.classList.remove("d-block");
-        break;
+        break; */
       case 1:
         itemNewName.classList.add("d-block");
         itemNewPass.classList.remove("d-block");
@@ -55,6 +55,18 @@ export class ConfiguracionComponent implements OnInit {
         itemNewTema.classList.add("d-block");
         itemNewName.classList.remove("d-block");
         itemNewPass.classList.remove("d-block");
+        break;
+    }
+  }
+  opCampoPriv(opc){
+    //this.opCampoGe("0");
+    let itemPerfil = document.getElementById('campoVerPerfil');
+    switch(opc){
+/*       case 0:
+        itemPerfil.classList.remove("d-block");
+        break; */
+      case 1:
+        itemPerfil.classList.add("d-block");
         break;
     }
   }
