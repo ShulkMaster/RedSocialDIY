@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { AuthService } from '../servicios/auth.service';
 import { Passwordcheck } from './passmatch';
+import { getHostElement } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-registro',
