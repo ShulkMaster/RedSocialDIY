@@ -23,8 +23,6 @@ mongoC.connect(URIS, config, function (err, db) {
   if (err) throw err;
 }).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no primise'));
 
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -193,6 +191,10 @@ app.get('/srv/posts/:user/:name', async (req, res) => {
         }
       }
     });
+});
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../dist/RedSocialDIY/index.html'));
 });
 
 server = app.listen(3551, () => console.log('Server runing'));

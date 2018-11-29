@@ -1,6 +1,6 @@
 <div class="search-results">
 </div>
-<div class="controls">
+<div class="controls" *ngIf="!onEdit">
   <a [routerLink]="'/post/edit/' + cPostUrl">Editar</a>
 </div>
 <div class="puclicar">

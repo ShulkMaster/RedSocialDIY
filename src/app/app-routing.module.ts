@@ -11,7 +11,7 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
 import { EditorComponent } from './editor/editor.component';
 
 // Guardias
-import { AutorGuard } from './guards/autor.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
   { path: 'configuracion', component: ConfiguracionComponent},
-  { path: 'post/edit/:user/:postname', component: EditorComponent, canActivate: [AutorGuard]},
+  { path: 'post/edit/:user/:postname', component: EditorComponent, canActivate: [AuthGuard]},
   { path: 'post/:user/:postname', component: PublicacionComponent}
 ];
 

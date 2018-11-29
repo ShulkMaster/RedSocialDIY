@@ -17,6 +17,7 @@ export class PublicacionComponent implements OnInit {
   failed = false;
   tempstring = 'Loading...';
   structure: ElementRef[];
+  onEdit = false;
   @ViewChild('pop') cuadropublic: ElementRef;
 
   constructor(private ruter: ActivatedRoute, private renderer: Renderer2, public dataserver: DataService) {

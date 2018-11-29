@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Renderer2, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Renderer2, Input } from '@angular/core';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { PublicacionComponent } from '../publicacion/publicacion.component';
   styleUrls: ['./editor.component.css']
 })
 
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, AfterViewInit {
 
   @ViewChild(PublicacionComponent) pubilicat: PublicacionComponent;
   @Input() superstring = '';
@@ -16,9 +16,15 @@ export class EditorComponent implements OnInit {
   constructor(private renderer2: Renderer2) { }
 
   ngOnInit() {
+    this.pubilicat.onEdit = true;
   }
 
-  startEdit() {
+  ngAfterViewInit(): void {
+    this.startEdit();
+  }
+
+
+  private startEdit() {
     console.log('cosa rara');
     const algoraro = this.pubilicat.cuadropublic.nativeElement.querySelectorAll('.parrafo > p');
     console.log('modo edicion activado', algoraro);
