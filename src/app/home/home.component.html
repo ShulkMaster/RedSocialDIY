@@ -25,7 +25,7 @@
                   </div>
                 </div>
                 <div class="autorinfo" [style.background-color]="'gray'">
-                  <img [src]="p.autor.propicture" [alt]="p.autor.username" class="rounded-circle">
+                  <a routerLink="/pro/{{p.username}}"><img [src]="p.autor.propicture" [alt]="p.autor.username" class="rounded-circle"></a>
                   <p>{{p.autor.username}}</p>
                 </div>
               </li>
