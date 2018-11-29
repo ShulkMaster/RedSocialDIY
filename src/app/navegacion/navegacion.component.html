@@ -1,5 +1,5 @@
 <header>
-  <div class="in-head">
+  <div class="in-head"  *ngIf="this.session.myUser; else init_sesion_block2">
     <div class="Empresa">
       <img width="20%" src="assets/img/provi.png" alt="Logo Redsocial">
     </div>
@@ -7,12 +7,27 @@
       <div class="ops">
         <ul>
           <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/profile">Test profile</a></li>
-          <li><a routerLink="/configuracion">TEST confi</a></li>
+          <li><a routerLink="/profile">Profile</a></li>
+          <li><a routerLink="/configuracion">Configuracion</a></li>
         </ul>
       </div>
     </nav>
   </div>
+
+  <ng-template #init_sesion_block2>
+    <div class="in-head">
+      <div class="Empresa2">
+        <img width="20%" src="assets/img/provi.png" alt="Logo Redsocial">
+      </div>
+      <nav class="list-nav">
+        <div class="ops">
+          <ul>
+            <li><a routerLink="/">Home</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </ng-template>
 
   <div class="contenbar">
     <div class="colorbox">
@@ -29,11 +44,12 @@
     <div class="UserInter">
       <div>
         <ul>
-          <a routerLink="/profile"><img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picus" width="40"></a>
+          <a routerLink="/profile"><img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picus"
+              width="40"></a>
         </ul>
       </div>
       <div class="personu">
-          <a routerLink="/profile"><span>{{ this.session.myUser.name}}</span></a>
+        <a routerLink="/profile"><span>{{ this.session.myUser.name}}</span></a>
       </div>
       <div class="personuout">
         <a routerLink="/registro"><span (click)='logout()'>Cerrar Sesion</span></a>
