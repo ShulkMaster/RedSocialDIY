@@ -39,15 +39,7 @@ export class AuthService {
 
   resgisterUser(uinfo: any) {
     console.log(uinfo, 'Send to server on register');
-    this.http.post('/srv/register', uinfo).subscribe(
-      (data: any) => {
-        console.log(data, 'gotten from server on register');
-      },
-      error => {
-        console.log(error);
-      }
-    );
-
+    return this.http.post('/srv/register', uinfo);
   }
 
   destroySession() {

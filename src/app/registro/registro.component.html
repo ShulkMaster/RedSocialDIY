@@ -1,43 +1,11 @@
 <div id="registro" class="wrap">
     <div class="card-body text-center">
-        <form [formGroup]="formregis" (ngSubmit)='registrar()' class="formula">
+        <form [formGroup]="formregis" (ngSubmit)='registrar()' class="formula" *ngIf="!exito">
             <h1 class="he mb-3 font-weight-normal mt-2 mb-4">Registro</h1>
-
-            <style>
-                .inicio{
-                    width:0%;
-                }
-                .paso1{
-                    width: 20%;
-                }
-                .paso2{
-                    width: 40%;
-                }
-                .paso3{
-                    width: 60%;
-                }
-                .paso4{
-                    width: 80%;
-                }
-                .final{
-                    width: 100%;
-                }
-            </style>
-
-            <fieldset class="card">
-                <div class="capturador">
-                <div id="progreso" class="progress">
-                    <div class="progress-bar inicio" role="progressbar">
-                    </div>
-                    <span class="sr-only"></span>
-                </div>
-                </div>
-            </fieldset>
             <fieldset class="card">
                 <div class="capturador ">
                     <label for="systemUser" class="col-4">Nombre de Usuario</label>
-                    <input type="text" id="systemUser" name="username"
-                        [class.error]="(this.formregis.controls.username.invalid && this.formregis.controls.username.touched)"
+                    <input type="text" id="systemUser" name="username" [class.error]="(this.formregis.controls.username.invalid && this.formregis.controls.username.touched)"
                         placeholder="User Name" formControlName="username">
                 </div>
             </fieldset>
@@ -45,8 +13,7 @@
             <fieldset class="card">
                 <div class="capturador">
                     <label for="userMail" class="col-4">Correo Electronico</label>
-                    <input type="email" id="userMail" name="userMail"
-                        [class.error]="(this.formregis.controls.email.invalid)"
+                    <input type="email" id="userMail" name="userMail" [class.error]="(this.formregis.controls.email.invalid)"
                         placeholder="Correo Electronico" formControlName="email" class="email" title="Ingrese correo valido-formato: correo@correo.com">
                 </div>
             </fieldset>
@@ -54,16 +21,18 @@
             <fieldset class="card">
                 <div class="capturador">
                     <label for="upassword" class="col-4">Contraseña</label>
-                    <input type="password" id="upassword" name="upassword"
-                        [class.error]="(this.formregis.controls.passwd.invalid && this.formregis.controls.passwd.dirty)"
-                        placeholder="Contraseña" formControlName="passwd" class="password"  title="Debe contener Mayusculas, minusculas, numeros y simbolos">
+                    <input type="password" id="upassword" name="upassword" [class.error]="(this.formregis.controls.passwd.invalid && this.formregis.controls.passwd.dirty)"
+                        placeholder="Contraseña" formControlName="passwd" class="password" title="Debe contener Mayusculas, minusculas, numeros y simbolos"
+                        (input)="changebarprop()">
+                    <div class="progressbar" *ngIf="this.formregis.controls.passwd.dirty" [ngStyle]="{'background-color': lecolor, 'width': barwid+'em', height:'15px' }">
+                        a
+                    </div>
                 </div>
 
                 <div class="capturador">
                     <label for="cupassword" class="col-4">Confirmar contraseña</label>
-                    <input type="password"  id="cupassword" name="cupassword"
-                    [class.error]="(this.formregis.controls.conpasswd.invalid)"
-                        placeholder="Contraseña" formControlName="conpasswd" class="password" >
+                    <input type="password" id="cupassword" name="cupassword" [class.error]="(this.formregis.controls.conpasswd.invalid)"
+                        placeholder="Contraseña" formControlName="conpasswd" class="password">
                 </div>
             </fieldset>
 
@@ -81,5 +50,11 @@
                 <a routerLink="/login" class="form-control userLog">Ya estas registrado?</a>
             </div>
         </form>
+        <div class="formula card" *ngIf="submited">
+            <div>
+                <p>{{mensaje}}</p>
+                <a routerLink="/login" *ngIf="exito">Iniciar Sesion</a>
+            </div>
+        </div>
     </div>
 </div>
