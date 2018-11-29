@@ -1,9 +1,5 @@
 export class Color {
 
-    red: number;
-    green: number;
-    blue: number;
-
     constructor(componente: any) {
         this.red = componente.r;
         this.green = componente.g;
@@ -11,7 +7,15 @@ export class Color {
         this.getColorHex();
     }
 
-    getColorHex() {
+    red: number;
+    green: number;
+    blue: number;
+
+    public static geterrorscale(param: number): string {
+        return 'blue';
+    }
+
+    getColorHex(): string {
         console.log('Color trasnform', '#' + this.toHex(this.red) + this.toHex(this.green) + this.toHex(this.blue));
         return '#' + this.toHex(this.red) + this.toHex(this.green) + this.toHex(this.blue);
     }
