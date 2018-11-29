@@ -24,6 +24,7 @@
     "@angular/router": "^7.0.4",
     "@types/mongodb": "^3.1.14",
     "@types/mongoose": "^5.3.1",
+    "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.2",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.5.4",

@@ -1,31 +1,43 @@
 <div class="container">
   <div *ngIf="this.session.myUser">
-    <div class="d-flex">
-      <div class="m-5 rounded m-5">
+    <div class="row">
+      <div class="container mt-5 ml-5 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <div class="col row border border-primary p-3 rounded bg-white">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+            <div class="row">
+              <div class="pb-3 pt-3 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <img class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" 
+                [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" 
+                class="rounded-circle picture">
+              </div>
+              <div class="info col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="userName pb-1 pt-4">
+                  Usurio: {{ this.session.myUser.name}}
+                </div>
+                <div class="Edad pb-1 pt-4">
+                  Edad: {{ this.session.myUser.edad}}
+                </div>
+              </div>
+              <div class="info col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="description pb-3 pt-3">Description: </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <input type="button" value="edad de suarior" (click)='checkuserage()'>
+              <input type="button" value="add data" (click)='this.dataserver.getpostfeed(79)'>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 ml-4 col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 bg-white">
+        ESTOY AQUI
+      </div>
+      <div class="mt-2 ml-5 col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
         <div class="col-sm-12-12 col-md-12-12 col-lg-12-12 col-xl-12-12 p-1 bg-white friends card">
           <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
           <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
           <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
           <div class="mb-3 mt-3 pl-5 pr-5">Friends</div>
-        </div>
-      </div>
-      <div class="container m-5 ">
-        <div class="col row border border-primary p-3 rounded bg-white">
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-            <div class="row">
-              <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 pb-3 pt-3">
-                <img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picture">
-              </div>
-              <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 info">
-                <div class="userName pb-3 pt-3">Usurio: {{ this.session.myUser.name}}</div>
-                <div class="Edad pb-3 pt-3">Edad: {{ this.session.myUser.edad}}</div>
-                <div class="description pb-3 pt-3">Description: </div>
-              </div>
-              <input type="button" value="edad de suarior" (click)='checkuserage()'>
-              <input type="button" value="add data" (click)='this.dataserver.getpostfeed(79)'>
-        
-            </div>
-          </div>
         </div>
       </div>
     </div>
