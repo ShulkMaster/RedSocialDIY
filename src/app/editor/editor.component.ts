@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Renderer, Renderer2, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2, Input } from '@angular/core';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class EditorComponent implements OnInit {
   @Input() superstring = '';
   slectedIndex: number;
 
-  constructor(private renderer: Renderer, private renderer2: Renderer2) { }
+  constructor(private renderer2: Renderer2) { }
 
   ngOnInit() {
   }
@@ -36,7 +36,9 @@ export class EditorComponent implements OnInit {
   }
 
   updatevalue() {
-    this.pubilicat.holder.contenido.parrafos[this.slectedIndex] = this.superstring;
+    const unnumer = this.pubilicat.holder.remap.parrafos[this.slectedIndex];
+    console.log('asi que click en ', this.slectedIndex, 'but selected ', unnumer);
+    this.pubilicat.holder.contenido.parrafos[unnumer] = this.superstring;
   }
 
 }
