@@ -1,8 +1,9 @@
 <textarea  [(ngModel)]='superstring' (input)="updatevalue()" name="editbox" cols="40" rows="5" id="editbox" class="maineditor">
 </textarea>
 <div class="controls">
-    <input type="button" value="Guardar">
-    <input type="button" value="Descartar Cambios">
-    <input type="button" value="Publicar">
+    <input type="button" [value]="editing ? 'Bloquear' : 'Desbloquear'" (click)="startEdit()">
+    <input type="button" value="Guardar" [disabled]="!editing">
+    <input type="button" value="Descartar Cambios" [disabled]="!editing">
+    <input type="button" value="Publicar" [disabled]="!editing">
 </div>
 <app-publicacion></app-publicacion>
