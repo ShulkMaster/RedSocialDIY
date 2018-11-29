@@ -1,47 +1,43 @@
-<div class="contentt">
-  <div *ngIf="this.session.myUser" class="contenedor">
-    <div class="lateral">
-      <ul align="center">
-        <li><a href="#">Friend Av</a></li>
-        <li><a href="#">Friend Av</a></li>
-        <li><a href="#">Friend Av</a></li>
-        <li><a href="#">Friend Av</a></li>
-        <li><a href="#">Friend Av</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="vscrollerx">
-        <h1>Publicaciones</h1>
-        <h2>Virtual Scroll using Angular 7</h2>
-        <ul>
-          <cdk-virtual-scroll-viewport [itemSize]="120" (scrolledIndexChange)="getNextPack()">
-            <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async; let indice = index;">
-              <li class="public">
-                <div class="contenu">
-                  <a class="titulu" routerLink="/post/{{p.autor.username}}/{{p.titulo}}">{{indice}}) {{p.titulo}}
-                    Views:{{p.views}}</a>
-                  <div class="sumary">
-                    <p>{{p.resumen}}</p>
-                  </div>
-                </div>
-                <div class="autorinfo" [style.background-color]="'gray'">
-                  <img [src]="p.autor.propicture" [alt]="p.autor.username" class="rounded-circle">
-                  <p>{{p.autor.username}}</p>
-                </div>
-              </li>
-            </ng-container>
-          </cdk-virtual-scroll-viewport>
-        </ul>
-      </div>
-    </div>
-    <div class="lateral">
-      <ul align="center">
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-        <li><a href="#">Categoria</a></li>
-      </ul>
-    </div>
+<div class="contentt contenedor">
+  <div class="lateral" *ngIf="this.session.myUser">
+    <ul align="center">
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+      <li><a href="#">Friend Av</a></li>
+    </ul>
+  </div>
+  <div class="vscrollerx">
+    <h1>Publicaciones</h1>
+    <h2>Virtual Scroll using Angular 7</h2>
+    <ul>
+      <cdk-virtual-scroll-viewport [itemSize]="120" (scrolledIndexChange)="getNextPack()">
+        <ng-container *cdkVirtualFor="let p of this.dataserver.publicaciones | async; let indice = index;">
+          <li class="public">
+            <div class="contenu">
+              <a class="titulu" routerLink="/post/{{p.autor.username}}/{{p.titulo}}">{{indice}}) {{p.titulo}}
+                Views:{{p.views}}</a>
+              <div class="sumary">
+                <p>{{p.resumen}}</p>
+              </div>
+            </div>
+            <div class="autorinfo" [style.background-color]="'gray'">
+              <img [src]="p.autor.propicture" [alt]="p.autor.username" class="rounded-circle">
+              <p>{{p.autor.username}}</p>
+            </div>
+          </li>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+    </ul>
+  </div>
+  <div class="lateral" *ngIf="this.session.myUser">
+    <ul align="center">
+      <li><a href="#">Categoria</a></li>
+      <li><a href="#">Categoria</a></li>
+      <li><a href="#">Categoria</a></li>
+      <li><a href="#">Categoria</a></li>
+      <li><a href="#">Categoria</a></li>
+    </ul>
   </div>
 </div>
