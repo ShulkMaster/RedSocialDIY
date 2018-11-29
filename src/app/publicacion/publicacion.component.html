@@ -1,6 +1,8 @@
 <div class="search-results">
 </div>
-
+<div class="controls">
+  <a [routerLink]="'/post/edit/' + cPostUrl">Editar</a>
+</div>
 <div class="puclicar">
   <div #pop class="bg-white border border-primary p-3 rounded" *ngIf="!failed; else misspost">
     <div class="row">
@@ -11,7 +13,8 @@
         <div>
           Id Autor: {{autor.username || tempstring}}
         </div>
-        <img [src]="this.autor.picture || 'http://files.sovize.com/wp-content/uploads/2018/11/default_user.png'" width="45%" alt="Nombre usuario" class="rounded-circle picture">
+        <img [src]="this.autor.picture || 'http://files.sovize.com/wp-content/uploads/2018/11/default_user.png'" width="45%"
+          alt="Nombre usuario" class="rounded-circle picture">
       </div>
     </div>
     <div class="row ">
@@ -19,6 +22,18 @@
         <p>{{this.holder.resumen || tempstring}}</p>
       </div>
     </div>
+    <div class="mapenclosure" *ngIf="this.holder.contenido">
+    <div class="bloquendo" *ngFor="let mapa of this.holder.map">
+      <div class="avoider" [ngSwitch]="mapa.charAt(0)">
+        <div *ngSwitchCase="'p'" class="parrafo">
+          <p>{{this.holder.contenido.parrafos[mapa.charAt(1)]}} intento {{i}}</p>
+        </div>
+        <div *ngSwitchCase="'s'" class="subtitulo">
+          <h2>{{this.holder.contenido.subtitulos[mapa.charAt(1)]}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
   <ng-template #misspost>

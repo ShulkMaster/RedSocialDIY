@@ -22,6 +22,9 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { EditorComponent } from './editor/editor.component';
 
+// Guardias
+import { AutorGuard } from './guards/autor.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,7 @@ import { EditorComponent } from './editor/editor.component';
     ReactiveFormsModule,
     ScrollingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AutorGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,4 @@
-<app-publicacion></app-publicacion>
-<p>
-  editor works!
-</p>
-
-<textarea [(ngModel)]='superstring' (keypress)='updatevalue()' name="editbox" cols="40" rows="5" id="editbox" class="maineditor">
+<textarea  [(ngModel)]='superstring' (input)="updatevalue()" name="editbox" cols="40" rows="5" id="editbox" class="maineditor">
 </textarea>
 <input type="button" value="Editar" (click)='startEdit($event)'>
+<app-publicacion></app-publicacion>

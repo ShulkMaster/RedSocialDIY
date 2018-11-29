@@ -10,6 +10,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { EditorComponent } from './editor/editor.component';
 
+// Guardias
+import { AutorGuard } from './guards/autor.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'infor', component: InforComponent},
@@ -19,7 +22,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
   { path: 'configuracion', component: ConfiguracionComponent},
-  { path: 'post/edit/:user/:postname', component: EditorComponent},
+  { path: 'post/edit/:user/:postname', component: EditorComponent, canActivate: [AutorGuard]},
   { path: 'post/:user/:postname', component: PublicacionComponent}
 ];
 
