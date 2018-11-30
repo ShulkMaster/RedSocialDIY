@@ -1,8 +1,9 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Publicacion } from '../classes/Publicacion';
 import { Usuario } from '../classes/usuario';
 import { DataService } from '../data.service';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-publicacion',
@@ -19,8 +20,11 @@ export class PublicacionComponent implements OnInit {
   structure: ElementRef[];
   onEdit = false;
   @ViewChild('pop') cuadropublic: ElementRef;
+  sameautor = false;
 
-  constructor(private ruter: ActivatedRoute, private renderer: Renderer2, public dataserver: DataService) {
+  constructor(private ruter: ActivatedRoute,
+    public dataserver: DataService,
+    public usernull: AuthService) {
     console.log('publicacion contructor fired');
     this.holder = new Publicacion();
     this.ruter.paramMap.subscribe(param => {
@@ -37,6 +41,9 @@ export class PublicacionComponent implements OnInit {
       if (respown.status) {
         this.autor = new Usuario(respown.data);
         this.holder.setdata(respown.data.publicacion);
+        if (this.holder.autorid === this.usernull.myUser._id) {
+          this.sameautor = true;
+        }
       } else {
         this.failed = true;
       }

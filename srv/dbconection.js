@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, '../dist/RedSocialDIY/')));
 app.get('/srv/login', async function (req, res) {
   console.log('data almacendad en sesion', req.session);
   if (req.session.username) {
-    const reduser = await usuario.findOne({ username: req.session.username });
+    const reduser = await usuario.findOne({ 'username': req.session.username });
     console.log('esta data se envia desde cookie en DB', reduser);
     res.json({
       status: true,
@@ -90,6 +90,7 @@ app.post('/srv/login', async function (req, res) {
   } else {
     console.log('Query result', reduser);
     req.session.username = reduser.username;
+    req.session._id = reduser._id;
     res.json({
       status: true,
       userdata: reduser
@@ -191,6 +192,30 @@ app.get('/srv/posts/:user/:name', async (req, res) => {
         }
       }
     });
+});
+
+app.get('/srv/getauth/:publicacion', (req, res) => {
+  console.log('data almacendad en sesion', req.session);
+  console.log('data almacendad en PARAMETROS', req.params);
+  if (req.session._id) {
+    publicacion.findOne({ 'titulo': req.params.publicacion}).then( data => {
+      if (data === null ) {
+        console.log('ai mandamos false');
+        res.json(false);
+      } else if (req.session._id === data.autorid) {
+        console.log('ai mandamos true');
+        res.json(true);
+      } else {
+        res.json(false);
+      }
+    }, err => {
+      console.log(err);
+      res.json(false);
+    }); 
+  } else {
+    console.log('ai mandamos false desde afuera');
+    res.json(false);
+  }
 });
 
 app.get('*', function(req, res) {

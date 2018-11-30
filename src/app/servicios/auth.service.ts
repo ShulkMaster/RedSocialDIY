@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../classes/usuario';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,9 @@ export class AuthService {
   myUser: Usuario;
   logeado = false;
 
-  constructor(private http: HttpClient, public router: Router) {
+  constructor(private http: HttpClient,
+    private router: Router,
+    private URL: ActivatedRoute) {
     console.log('auth contructor fired');
     this.http.get<Usuario>('/srv/login').subscribe((data: any) => {
       console.log('desde API session', data);

@@ -1,7 +1,7 @@
 <div class="search-results">
 </div>
 <div class="controls" *ngIf="!onEdit">
-  <a [routerLink]="'/post/edit/' + cPostUrl">Editar</a>
+  <a [routerLink]="'/post/' + cPostUrl + '/edit'" *ngIf="sameautor">Editar</a>
 </div>
 <div class="puclicar">
   <div #pop class="bg-white border border-primary p-3 rounded" *ngIf="!failed; else misspost">
