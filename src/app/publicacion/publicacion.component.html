@@ -26,7 +26,7 @@
     <div class="bloquendo" *ngFor="let mapa of this.holder.map">
       <div class="avoider" [ngSwitch]="mapa.charAt(0)">
         <div *ngSwitchCase="'p'" class="parrafo">
-          <p>{{this.holder.contenido.parrafos[mapa.charAt(1)]}} intento {{i}}</p>
+          <p>{{this.holder.contenido.parrafos[mapa.charAt(1)]}}</p>
         </div>
         <div *ngSwitchCase="'s'" class="subtitulo">
           <h2>{{this.holder.contenido.subtitulos[mapa.charAt(1)]}}</h2>

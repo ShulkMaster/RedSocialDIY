@@ -15,5 +15,6 @@
 
 .onedit{
     text-decoration: underline;
-    color: #acfd80;
+    border: 1px solid lightseagreen;
+    color: #3F3F3F;
 }

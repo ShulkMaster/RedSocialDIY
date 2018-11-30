@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
   { path: 'configuracion', component: ConfiguracionComponent},
+  { path: 'post/new/edit', component: EditorComponent},
   { path: 'post/:user/:postname/edit', component: EditorComponent, canActivate: [AuthGuard]},
   { path: 'post/:user/:postname', component: PublicacionComponent}
 ];

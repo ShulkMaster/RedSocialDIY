@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     private http: HttpClient) {}
 
   canActivate():  Observable<boolean> | boolean {
-    console.log('desde el guardio: ', this.URL.url.split('/')[3]);
+    console.log('desde el guardio2: ', this.URL.url.split('/')[3]);
     return this.http.get<boolean>('/srv/getauth/' + this.URL.url.split('/')[3]);
   }
 

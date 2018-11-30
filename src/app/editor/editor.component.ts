@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Renderer2, Input } from '@angular/core';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
+import { Router } from '@angular/router';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-editor',
@@ -16,9 +18,16 @@ export class EditorComponent implements OnInit {
   listeners = [];
 
 
-  constructor(private renderer2: Renderer2) { }
+  constructor(
+    private renderer2: Renderer2,
+    private rutt: Router,
+    public session: AuthService
+    ) { }
 
   ngOnInit() {
+    if (!this.session.myUser) {
+      this.rutt.navigate(['/login']);
+    }
     this.pubilicat.onEdit = true;
   }
 

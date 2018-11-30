@@ -1,5 +1,5 @@
 <header>
-  <div class="in-head"  *ngIf="this.session.myUser; else init_sesion_block2">
+  <div class="in-head" *ngIf="this.session.myUser; else init_sesion_block2">
     <div class="Empresa">
       <img width="20%" src="assets/img/provi.png" alt="Logo Redsocial">
     </div>
@@ -41,19 +41,20 @@
   </div>
 
   <div class="sobreuser" *ngIf="this.session.myUser; else init_sesion_block">
-    <div class="UserInter">
-      <div>
-        <ul>
-          <a routerLink="/profile"><img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picus"
-              width="40"></a>
-        </ul>
-      </div>
-      <div class="personu">
-        <a routerLink="/profile"><span>{{ this.session.myUser.name}}</span></a>
-      </div>
-      <div class="personuout">
-        <a routerLink="/registro"><span (click)='logout()'>Cerrar Sesion</span></a>
-      </div>
+    <div class="personu">
+      <a routerLink="post/new/edit" class="publicar" href="#">Publicar</a>
+    </div>
+    <div>
+      <ul>
+        <a routerLink="/profile"><img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picus"
+            width="40"></a>
+      </ul>
+    </div>
+    <div class="personu">
+      <a routerLink="/profile"><span>{{ this.session.myUser.name}}</span></a>
+    </div>
+    <div class="personuout">
+      <a routerLink="/login"><span (click)='logout()'>Cerrar Sesion</span></a>
     </div>
   </div>
 
