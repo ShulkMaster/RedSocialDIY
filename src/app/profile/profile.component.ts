@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { AuthService } from '../servicios/auth.service';
+import { Usuario } from '../classes/usuario';
+
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +11,7 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class ProfileComponent implements OnInit {
   running = false;
+  MyUser: Usuario;
 
   constructor(public session: AuthService, public dataserver: DataService) {
     console.log('Home constructor fired from home');
