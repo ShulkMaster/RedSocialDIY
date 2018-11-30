@@ -1,5 +1,5 @@
 <header>
-  <div class="in-head"  *ngIf="this.session.myUser; else init_sesion_block2">
+  <div class="in-head" *ngIf="this.session.myUser; else init_sesion_block2">
     <div class="Empresa">
       <a routerLink="/"><img width="20%" src="assets/img/provi.png" alt="Logo Redsocial"></a>
     </div>
@@ -42,6 +42,9 @@
 
   <div class="sobreuser" *ngIf="this.session.myUser; else init_sesion_block">
     <div class="UserInter">
+        <div class="publicar">
+            <a routerLink="post/new/edit" class="publicar" href="#"><span>Publicar</span></a>
+        </div>
       <div>
         <ul>
           <a routerLink="/profile/MyUser"><img [src]="this.session.myUser.picture" [alt]="this.session.myUser.name" class="rounded-circle picus"

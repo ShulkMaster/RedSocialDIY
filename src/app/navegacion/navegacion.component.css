@@ -140,7 +140,7 @@ p i {
 
 .UserInter {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     color: #e7e7e7;
     font-size: 0.8em;
     text-transform: uppercase;
@@ -186,4 +186,18 @@ p i {
 
 .personuout a span {
     color: #f5f500;
+}
+
+.sobreuser {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobreuser > * {
+    padding: 0 1em;
+}
+.publicar a span {
+    color: orange;
 }

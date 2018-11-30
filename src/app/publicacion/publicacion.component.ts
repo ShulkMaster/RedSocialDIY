@@ -27,15 +27,23 @@ export class PublicacionComponent implements OnInit {
     public usernull: AuthService) {
     console.log('publicacion contructor fired');
     this.holder = new Publicacion();
-    this.ruter.paramMap.subscribe(param => {
-      this.cPostUrl = param.get('user') + '/' + param.get('postname');
-      console.log(this.cPostUrl);
-    });
     this.autor = new Usuario({username: 'Loading....', favcolor: {r: 20, g: 120, b: 130}});
     this.structure = new Array<ElementRef>();
   }
 
   ngOnInit() {
+    this.ruter.paramMap.subscribe(param => {
+      this.cPostUrl = param.get('user') + '/' + param.get('postname');
+      console.log(this.cPostUrl);
+      if (param.get('postname') === null) {
+        this.hexch();
+      } else {
+        this.plume();
+      }
+    });
+  }
+
+  plume() {
     this.dataserver.getpost(this.cPostUrl).subscribe((respown: any) => {
       console.log('esto es la publicacion: ', respown);
       if (respown.status) {
@@ -50,5 +58,9 @@ export class PublicacionComponent implements OnInit {
         this.failed = true;
       }
     });
+  }
+
+  hexch() {
+    console.log('hola prro hexted');
   }
 }
