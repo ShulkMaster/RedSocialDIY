@@ -126,18 +126,21 @@ app.post('/srv/register', async (req, res) => {
 app.get('/srv/posts/:index', (req, res) => {
   console.log('post to /srv/posts whit user:', req.user);
   console.log('post to /srv/posts whit lastindex:', req.body.lastOne);
-  const oldIndex = parseInt(req.params.index,10);
+  const oldIndex = parseInt(req.params.index, 10);
   console.log('El ultimo index es: ', oldIndex);
-    publicacion.aggregate([
-    {"$match": {"publish": true}},
-    {"$lookup": {
+  publicacion.aggregate([
+    { "$match": { "publish": true } },
+    {
+      "$lookup": {
         "localField": "autorid",
         "from": "usuarios",
         "foreignField": "_id",
         "as": "autor"
-    }},
-    {"$unwind":{"path": "$autor","preserveNullAndEmptyArrays": false}},
-    {"$project": {
+      }
+    },
+    { "$unwind": { "path": "$autor", "preserveNullAndEmptyArrays": false } },
+    {
+      "$project": {
         "_id": "$_id",
         "titulo": "$titulo",
         "autor.id": "$autorid",
@@ -145,10 +148,12 @@ app.get('/srv/posts/:index', (req, res) => {
         "autor.propicture": "$autor.propicture",
         "resumen": "$resumen",
         "views": "$views",
-        "tags": "$tags"}},
-        {"$sort":{"views": -1.0}},
-    {"$skip": oldIndex},
-    {"$limit": 10.0}]).option({ "allowDiskUse": true }).exec(function (err, docs) {
+        "tags": "$tags"
+      }
+    },
+    { "$sort": { "views": -1.0 } },
+    { "$skip": oldIndex },
+    { "$limit": 10.0 }]).option({ "allowDiskUse": true }).exec(function (err, docs) {
       if (err) {
         console.log('Error', err);
         res.json({ status: false, error: err });
@@ -163,43 +168,47 @@ app.get('/srv/posts/:user/:name', async (req, res) => {
   const postname = req.params.name;
   console.log('Buscando publicacion de: ', username, ', nombre del posates: ', postname);
   const data = await usuario.aggregate([
-    {"$match": {"username": username}},
-    {"$lookup": {
+    { "$match": { "username": username } },
+    {
+      "$lookup": {
         "localField": "_id",
         "from": "publicaciones",
         "foreignField": "autorid",
         "as": "tutorial"
-    }},
-    {"$unwind":{"path": "$tutorial","preserveNullAndEmptyArrays": false}},
-    {"$match": {"tutorial.titulo": postname}},
-    {"$project": {
-      "_id": "$_id",
-      "username": "$username",
-      "favcolor": "$favcolor",
-      "propicture": "$propicture",
-      "publicacion": "$tutorial"
-    }}
-  ]).exec( function (err, docs) {
-      if (err) {
-        console.log('Error', err);
-        res.json({ status: false, error: err });
-      } else {
-        if (docs.length === 0) {
-          res.json({ status: false, data: docs, error: "Usuario sin publicaciones o no existe"});
-        }
-        else{
-        res.json({ status: true, data: docs[0] });
-        }
       }
-    });
+    },
+    { "$unwind": { "path": "$tutorial", "preserveNullAndEmptyArrays": false } },
+    { "$match": { "tutorial.titulo": postname } },
+    {
+      "$project": {
+        "_id": "$_id",
+        "username": "$username",
+        "favcolor": "$favcolor",
+        "propicture": "$propicture",
+        "publicacion": "$tutorial"
+      }
+    }
+  ]).exec(function (err, docs) {
+    if (err) {
+      console.log('Error', err);
+      res.json({ status: false, error: err });
+    } else {
+      if (docs.length === 0) {
+        res.json({ status: false, data: docs, error: "Usuario sin publicaciones o no existe" });
+      }
+      else {
+        res.json({ status: true, data: docs[0] });
+      }
+    }
+  });
 });
 
 app.get('/srv/getauth/:publicacion', (req, res) => {
   console.log('data almacendad en sesion', req.session);
   console.log('data almacendad en PARAMETROS', req.params);
   if (req.session._id) {
-    publicacion.findOne({ 'titulo': req.params.publicacion}).then( data => {
-      if (data === null ) {
+    publicacion.findOne({ 'titulo': req.params.publicacion }).then(data => {
+      if (data === null) {
         console.log('ai mandamos false');
         res.json(false);
       } else if (req.session._id === data.autorid) {
@@ -211,15 +220,38 @@ app.get('/srv/getauth/:publicacion', (req, res) => {
     }, err => {
       console.log(err);
       res.json(false);
-    }); 
+    });
   } else {
     console.log('ai mandamos false desde afuera');
     res.json(false);
   }
 });
 
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../dist/RedSocialDIY/index.html'));
+app.get('/srv/getprofile/:profid', (req, res) => {
+  console.log('data almacendad en PARAMETROS', req.params.profid);
+  if (req.params.profid) {
+    usuario.findById({ '_id': req.params.profid }, '_id username name favcolor age propicture email').then( repollo => {
+      console.log('getting users', repollo);
+      res.json({
+        status: true,
+        data: repollo
+      });
+    }, err => {
+      res.json({
+        status: false,
+        error: err
+      });
+    });
+  } else {
+    res.json({
+      status: false,
+      error: 'No se provee ID de usuario'
+    });
+  }
+});
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../dist/RedSocialDIY/index.html'));
 });
 
 server = app.listen(3551, () => console.log('Server runing'));

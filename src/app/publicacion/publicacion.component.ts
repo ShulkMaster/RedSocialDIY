@@ -41,8 +41,10 @@ export class PublicacionComponent implements OnInit {
       if (respown.status) {
         this.autor = new Usuario(respown.data);
         this.holder.setdata(respown.data.publicacion);
-        if (this.holder.autorid === this.usernull.myUser._id) {
-          this.sameautor = true;
+        if (this.usernull.myUser) {
+          if (this.holder.autorid === this.usernull.myUser._id) {
+            this.sameautor = true;
+          }
         }
       } else {
         this.failed = true;
