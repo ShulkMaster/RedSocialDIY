@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
+import { Usuario } from '../classes/usuario';
 
 @Component({
   selector: 'app-navegacion',
@@ -8,6 +9,9 @@ import { AuthService } from '../servicios/auth.service';
 })
 
 export class NavegacionComponent implements OnInit {
+
+  user: Usuario;
+
 
   constructor(public session: AuthService) {
     console.log('Navegacion constructor fired');

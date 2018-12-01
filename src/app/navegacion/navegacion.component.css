@@ -140,7 +140,7 @@ p i {
 
 .UserInter {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     color: #e7e7e7;
     font-size: 0.8em;
     text-transform: uppercase;
@@ -198,8 +198,68 @@ p i {
 .sobreuser > * {
     padding: 0 1em;
 }
-.publicar {
-    padding: 1em;
-    background-color: orange;
-    color: #000000;
+.publicar a span {
+    color: orange;
+}
+
+@media only screen and (max-width:910px){
+    .Connect{
+        padding: 1.2em;
+    }
+}
+
+@media only screen and (max-width:905px){
+    .Connect{
+        padding: 0em;
+    }
+    .contenbar{
+        display: none;
+    }
+    .Connect ul li {
+        display: inline;
+        font-size: 0.9em;
+        padding: 0em;
+    }
+}
+
+
+@media only screen and (max-width:600px){
+    .in-head {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        color: #ffffff;
+        justify-content: center;
+        align-items: center;
+        padding: 0em 1.5em;
+        width: 50%;
+    }
+    .list-nav ul li {
+        display: none;
+        padding: 0em;
+
+    }
+}
+
+@media only screen and (max-width:420px){
+    .in-head {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        color: #ffffff;
+        justify-content: center;
+        align-items: center;
+        padding: 0em 1.5em;
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width:730px){
+    .in-head .Empresa{
+        width: 500%;
+    }
+}
+
+@media only screen and (max-width:590px){
+    .Empresa{
+        width: 500%;
+    }
 }

@@ -69,3 +69,15 @@ cdk-virtual-scroll-viewport .public .autorinfo img{
     object-fit: cover;
     height: 80px;
 }
+
+@media only screen and (max-width:800px){
+    .lateral{
+        display: none;
+    }
+    .contenedor {
+        margin:0%;
+        padding: 0%;
+        display: grid;
+        grid-template-columns: auto;
+    }
+}

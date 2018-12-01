@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../data.service';
 import { AuthService } from '../servicios/auth.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { Usuario } from '../classes/usuario';
+
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,10 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 })
 
 export class HomeComponent implements OnInit {
+
+  otheruser: Usuario;
+  MyUser: Usuario;
+
 
   @ViewChild(CdkVirtualScrollViewport) renderize: CdkVirtualScrollViewport;
 
