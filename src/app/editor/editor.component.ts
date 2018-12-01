@@ -25,13 +25,13 @@ export class EditorComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    if (!this.session.myUser) {
+    if (!this.session.myUser.username) {
       this.rutt.navigate(['/login']);
     }
     this.pubilicat.onEdit = true;
   }
 
-  private startEdit() {
+  startEdit() {
     if (this.editing) {
       this.editing = false;
       // auto save!! code here

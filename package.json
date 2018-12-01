@@ -1,10 +1,10 @@
 {
   "name": "red-social-diy",
-  "version": "0.0.0",
+  "version": "0.5.3",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --proxy-config proxyconf.json",
-    "build": "ng build",
+    "start": "node ./srv/dbconection.js",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
