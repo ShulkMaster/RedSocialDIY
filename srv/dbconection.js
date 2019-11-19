@@ -8,8 +8,17 @@ const MongoStore = require('connect-mongo')(session);
 const usuario = require('./models/user');
 const publicacion = require('./models/publicacion');
 const path = require('path');
+const https = require('https');
+const fs = require('fs');
 const app = express();
-var server;
+const key = fs.readFileSync('../extra/atlantis.key');
+const cert = fs.readFileSync('../extra/atlantis.cert');
+let server;
+
+const options = {
+  key: key,
+  cert: cert
+};
 
 const config = {
   useNewUrlParser: true,
@@ -18,16 +27,19 @@ const config = {
 mongoC.Promise = global.Promise;
 
 const URIS = process.env.Mongo;
-console.log(URIS);
+const mSecret = process.env.SECRET;
+console.log(URIS, mSecret);
 mongoC.connect(URIS, config, function (err, db) {
   if (err) throw err;
-}).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no primise'));
-
+}).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no promise'));
+app.use(logger('common', {
+  stream: fs.createWriteStream('../extra/reports.log', {flags: 'a'})
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-  secret: 'sodsgsdgsdgsgsd',
+  secret:mSecret,
   name: 'usersesion',
   store: new MongoStore({ mongooseConnection: mongoC.connection }),
   resave: false,
@@ -156,8 +168,10 @@ app.get('/srv/posts/:index', (req, res) => {
     { "$limit": 10.0 }]).option({ "allowDiskUse": true }).exec(function (err, docs) {
       if (err) {
         console.log('Error', err);
-        res.json({ status: false, error: err });
+        res.status(403);
+        res.json({ status: false, error: 'error en la peticion' });
       } else {
+        res.status(200);
         res.json({ status: true, data: docs });
       }
     });
@@ -253,8 +267,9 @@ app.get('/srv/getprofile/:profid', (req, res) => {
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../dist/RedSocialDIY/index.html'));
 });
-
-server = app.listen(3551, () => console.log('Server runing'));
+const port = process.env.PORT;
+server = https.createServer(options, app);
+server.listen(port, () => console.log(`Server runing at ${port}`));
 
 function closeapp() {
   server.close();
