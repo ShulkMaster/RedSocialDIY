@@ -32,7 +32,7 @@ console.log(URIS, mSecret);
 mongoC.connect(URIS, config, function (err, db) {
   if (err) throw err;
 }).then(() => console.log('connection succesful')).catch((err) => console.error(err, 'no promise'));
-app.use(logger('common', {
+app.use(logger('combined', {
   stream: fs.createWriteStream('../extra/reports.log', {flags: 'a'})
 }));
 app.use(logger('dev'));

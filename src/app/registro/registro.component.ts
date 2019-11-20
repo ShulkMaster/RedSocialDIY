@@ -15,7 +15,7 @@ export class RegistroComponent implements OnInit {
 
   formregis: FormGroup;
   barwid: number;
-  colorPíker: Color;
+  colorPiker: Color;
   lecolor: string;
   submited: boolean;
   exito: boolean;
