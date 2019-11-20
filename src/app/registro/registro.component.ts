@@ -88,5 +88,6 @@ export class RegistroComponent implements OnInit {
     this.barwid = this.formregis.controls.passwd.hasError('required') ? (this.barwid - 4) : this.barwid;
     this.barwid = this.formregis.controls.passwd.hasError('minlength') ? (this.barwid - 1.20) : this.barwid;
     this.barwid = this.formregis.controls.passwd.hasError('pattern') ? (this.barwid - 1.20) : this.barwid;
+    this.lecolor = Color.geterrorscale(this.barwid);
   }
 }
